@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "byconity.fullname" . }}-dm-run
+  labels:
+    {{- include "byconity.labels" . | nindent 4 }}
+    byconity-role: daemon-manager
+data:
+  run: |
+    #!/bin/bash
+    exec "${APP_ROOT}/bin/daemon-manager" --config "/etc/byconity/daemon-manager.yaml"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "byconity.fullname" . }}-dm-config
+  labels:
+    {{- include "byconity.labels" . | nindent 4 }}
+    byconity-role: daemon-manager
+data:
+  daemon-manager.yaml: |
+    {{- $server_service := dict "service" (printf "%s-%s" .Release.Name "server") "headless_service" (printf "%s-%s-headless" .Release.Name "server") "psm" (printf "%s-%s" .Release.Name "server") }}
+    {{- $tso_service := dict "service" (printf "%s-%s" .Release.Name "tso") "headless_service" (printf "%s-%s-headless" .Release.Name "tso") "psm" (printf "%s-%s" .Release.Name "tso") }}
+    {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service) }}
+    {{- .Files.Get "files/daemon-manager.yaml" | fromYaml | merge $service_discovery .Values.byconity.daemonManager.configOverwrite | toYaml | nindent 4 }}
+  hdfs3.xml: |
+    <configuration>
+        {{- range $key, $val := .Values.byconity.server.hdfs3Config }}
+        <property>
+            <name>{{ $key }}</name>
+            <value>{{ $val }}</value>
+        </property>
+        {{- end }}
+    </configuration>

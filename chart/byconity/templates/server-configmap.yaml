@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "byconity.fullname" . }}-server-run
+  labels:
+    {{- include "byconity.labels" . | nindent 4 }}
+    byconity-role: server
+data:
+  run: |
+    #!/bin/bash
+    exec "${APP_ROOT}/bin/clickhouse-server" --config "/etc/byconity/server.yaml"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "byconity.fullname" . }}-server-config
+  labels:
+    {{- include "byconity.labels" . | nindent 4 }}
+    byconity-role: server
+data:
+  server.yaml: |
+    {{- $ports := dict "tcp_port" .Values.byconity.ports.tcp "http_port" .Values.byconity.ports.http "rpc_port" .Values.byconity.ports.rpc "exchange_port" .Values.byconity.ports.exchange "exchange_status_port" .Values.byconity.ports.exchangeStatus }}
+    {{- $server_service := dict "service" (printf "%s-%s" .Release.Name "server") "headless_service" (printf "%s-%s-headless" .Release.Name "server") "psm" (printf "%s-%s" .Release.Name "server") }}
+    {{- $tso_service := dict "service" (printf "%s-%s" .Release.Name "tso") "headless_service" (printf "%s-%s-headless" .Release.Name "tso") "psm" (printf "%s-%s" .Release.Name "tso") }}
+    {{- $dm_service := dict "service" (printf "%s-%s" .Release.Name "daemon-manager") "headless_service" (printf "%s-%s-headless" .Release.Name "daemon-manager") "psm" (printf "%s-%s" .Release.Name "daemon-manager") }}
+    {{- $rm_service := dict "service" (printf "%s-%s" .Release.Name "resource-manager") "headless_service" (printf "%s-%s-headless" .Release.Name "resource-manager") "psm" (printf "%s-%s" .Release.Name "resource-manager") }}
+    {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service "daemon_manager" $dm_service "resource_manager" $rm_service) }}
+    {{- $catalog := dict "catalog" (dict "name_space" (include "byconity.fullname" .)) }}
+    {{- $hdfs_addr := dict "hdfs_addr" (printf "hdfs://%s-hdfs-namenode-0.%s-hdfs-namenodes:8020" (include "byconity.fullname" .) (include "byconity.fullname" .)) }}
+    {{- .Files.Get "files/server.yaml" | fromYaml | merge $ports $service_discovery $catalog $hdfs_addr .Values.byconity.server.configOverwrite | toYaml | nindent 4 }}
+  users.yaml: |
+    {{- .Files.Get "files/users.yaml" | fromYaml | merge .Values.byconity.usersOverwrite | toYaml | nindent 4 }}
+  hdfs3.xml: |
+    <configuration>
+        {{- range $key, $val := .Values.byconity.server.hdfs3Config }}
+        <property>
+            <name>{{ $key }}</name>
+            <value>{{ $val }}</value>
+        </property>
+        {{- end }}
+    </configuration>
