@@ -8,6 +8,7 @@ spec:
   routing:
     headlessService: true
     publicIPSource: service
-  mainContainer: {}
-  sidecarContainer: {}
+  {{- if .Values.fdb.clusterSpec }}
+  {{- toYaml .Values.fdb.clusterSpec | nindent 2 }}
+  {{- end }}
 {{- end }}

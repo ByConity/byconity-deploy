@@ -53,6 +53,7 @@ byconity:
       disk_cache_strategies:
         simple:
           lru_max_size: 429496729600 # 400Gi
+      # timezone: Etc/UTC
     hdfs3Config:
       dfs.client.metrics.enable: true
       dfs.client.metrics.use_domain_socket: true
@@ -142,6 +143,7 @@ byconity:
       disk_cache_strategies:
         simple:
           lru_max_size: 429496729600 # 400Gi
+      # timezone: Etc/UTC
     hdfs3Config:
       dfs.client.metrics.enable: true
       dfs.client.metrics.use_domain_socket: true
@@ -223,12 +225,7 @@ fdb:
   enabled: true
   enableCliPod: true
   version: 7.1.15
-  mainContainer:
-    imageConfigs:
-      - baseImage: foundationdb/foundationdb
-  sidecarContainer:
-    imageConfigs:
-      - baseImage: foundationdb/foundationdb-kubernetes-sidecar
+  clusterSpec: {}
 
 fdb-operator:
   enabled: true
