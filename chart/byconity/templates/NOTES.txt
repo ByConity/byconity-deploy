@@ -2,4 +2,4 @@ Byconity cluster "{{ include "byconity.fullname" . }}" deployed successfully! Pl
 
 $ kubectl -n {{ .Release.Namespace }} exec -it sts/{{ include "byconity.fullname" . }}-server -- bash
 $ clickhouse client
-172.16.1.1) show databases
+172.16.1.1 :) show databases

@@ -4,9 +4,6 @@ This repos demonstrates how to deploy a ByConity cluster in your Kubernetes clus
 
 ## Deploy local to try a demo
 
-> Warning: kind is not designed for production use.
-> Note for macOS users: you may need to increase the memory available for containers (recommend 6 GB).
-
 ### Prerequisites
 
 - Install and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) in your local environment
@@ -14,6 +11,9 @@ This repos demonstrates how to deploy a ByConity cluster in your Kubernetes clus
 - Install [kind](https://kind.sigs.k8s.io/) and [Docker](https://www.docker.com/)
 
 ### Use Kind to configure a local Kubernetes cluster
+
+> Warning: kind is not designed for production use.
+> Note for macOS users: you may need to [increase the memory available](https://docs.docker.com/desktop/get-started/#resources) for containers (recommend 6 GB).
 
 This would create a 1-control-plane, 3-worker Kubernetes cluster.
 
