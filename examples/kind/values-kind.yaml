@@ -2,6 +2,10 @@ byconity:
   server:
     replicas: 1
     image: hub.byted.org/clickhouse/byconity:2.0.0.27
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
     storage:
       localDisk:
         pvcSpec:
@@ -34,6 +38,7 @@ byconity:
     tolerations: []
     affinity: {}
     imagePullSecrets: []
+    securityContext: {}
     storage:
       localDisk:
         pvcSpec:

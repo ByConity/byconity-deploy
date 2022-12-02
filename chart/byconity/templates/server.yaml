@@ -75,6 +75,10 @@ spec:
           {{- if $.Values.byconity.additionalVolumes.volumeMounts }}
             {{- toYaml $.Values.byconity.additionalVolumes.volumeMounts | nindent 12 }}
           {{- end }}
+          {{- if .securityContext }}
+          securityContext:
+            {{- toYaml .securityContext | nindent 12 }}
+          {{- end }}
       volumes:
         - name: run
           configMap:
