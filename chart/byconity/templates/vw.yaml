@@ -31,9 +31,14 @@ spec:
     spec:
       containers:
         - name: byconity-worker
-          image: {{ .image }}
+          image: {{ coalesce .image $.Values.byconity.image }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
+            - name: BYCONITY_ROLE
+              value: worker
+          {{- if $.Values.byconity.additionalEnvs }}
+            {{- toYaml $.Values.byconity.additionalEnvs | nindent 12 }}
+          {{- end }}
             - name: VIRTUAL_WAREHOUSE_ID
               value: {{ .name }}
             - name: WORKER_GROUP_ID
@@ -50,10 +55,10 @@ spec:
           ports:
             - name: tcp
               containerPort: {{ $.Values.byconity.ports.tcp }}
-            - name: http
-              containerPort: {{ $.Values.byconity.ports.http }}
             - name: rpc
               containerPort: {{ $.Values.byconity.ports.rpc }}
+            - name: http
+              containerPort: {{ $.Values.byconity.ports.http }}
             - name: exchange
               containerPort: {{ $.Values.byconity.ports.exchange }}
             - name: exchange-status

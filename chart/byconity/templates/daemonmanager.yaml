@@ -26,9 +26,14 @@ spec:
     spec:
       containers:
         - name: byconity-daemon-manager
-          image: {{ .image }}
+          image: {{ coalesce .image $.Values.byconity.image }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
+            - name: BYCONITY_ROLE
+              value: daemon-manager
+          {{- if $.Values.byconity.additionalEnvs }}
+            {{- toYaml $.Values.byconity.additionalEnvs | nindent 12 }}
+          {{- end }}
           {{- if .resources }}
           resources:
             {{- toYaml .resources | nindent 12 }}

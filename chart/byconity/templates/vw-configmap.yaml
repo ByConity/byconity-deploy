@@ -8,6 +8,7 @@ metadata:
 data:
   run: |
     #!/bin/bash
+    chown root. /var/byconity /var/log/byconity
     exec "${APP_ROOT}/bin/clickhouse-server" --config "/etc/byconity/worker.yaml"
 
 {{- range .Values.byconity.virtualWarehouses }}

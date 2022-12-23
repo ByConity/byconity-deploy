@@ -8,15 +8,22 @@ metadata:
 data:
   poststart: |
     #!/bin/bash
-  prestop: |
+    set -euo pipefail
+    {{- .Values.byconity.postStart | nindent 4}}
+  prestop: |-
     #!/bin/bash
-    curl --fail -X GET "http://127.0.0.1:{{ .Values.byconity.ports.http }}/api/resource_report?action=stop
+    set -euo pipefail
+    curl --fail -X GET "http://127.0.0.1:{{ .Values.byconity.ports.http }}/api/resource_report?action=stop"
+    {{- .Values.byconity.preStop | nindent 4 }}
   readiness: |
     #!/bin/bash
+    set -euo pipefail
     QUERY_TIMEOUT=5
     timeout -k 1 "${QUERY_TIMEOUT}" clickhouse-client -h 127.0.0.1 --port "{{ .Values.byconity.ports.tcp }}" --user "probe" --password "{{ .Values.byconity.usersOverwrite.users.probe.password }}" --max_execution_time "$((QUERY_TIMEOUT-1))" -n -q "select 1" 2>&1
+    {{- .Values.byconity.readiness | nindent 4}}
   liveness: |
     #!/bin/bash
+    {{- .Values.byconity.liveness | nindent 4 }}
   readiness-tso: |
     #!/bin/bash
     curl --connect-timeout 3 --fail http://localhost:9000/health
@@ -32,3 +39,6 @@ data:
     curl --connect-timeout 3 --fail http://localhost:9000/health
   liveness-rm: |
     #!/bin/bash
+{{- range $key, $data := .Values.byconity.lifecycleExtraConfig }}
+  {{ $key | quote }}: {{ $data | quote }}
+{{- end }}

@@ -27,9 +27,14 @@ spec:
     spec:
       containers:
         - name: byconity-server
-          image: {{ .image }}
+          image: {{ coalesce .image $.Values.byconity.image }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
+            - name: BYCONITY_ROLE
+              value: server
+          {{- if $.Values.byconity.additionalEnvs }}
+            {{- toYaml $.Values.byconity.additionalEnvs | nindent 12 }}
+          {{- end }}
           {{- if .resources }}
           resources:
             {{- toYaml .resources | nindent 12 }}
@@ -37,10 +42,10 @@ spec:
           ports:
             - name: tcp
               containerPort: {{ $.Values.byconity.ports.tcp }}
-            - name: http
-              containerPort: {{ $.Values.byconity.ports.http }}
             - name: rpc
               containerPort: {{ $.Values.byconity.ports.rpc }}
+            - name: http
+              containerPort: {{ $.Values.byconity.ports.http }}
             - name: exchange
               containerPort: {{ $.Values.byconity.ports.exchange }}
             - name: exchange-status

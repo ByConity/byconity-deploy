@@ -23,8 +23,9 @@ resource_manager:
     vw:
       - name: vw_default
         type: default
+        num_workers: 1
         worker_groups: ""
       - name: vw_write
         type: write
-        min_workers: 1
+        num_workers: 1
         worker_groups: ""
