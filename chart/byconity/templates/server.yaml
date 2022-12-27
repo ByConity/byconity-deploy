@@ -46,6 +46,10 @@ spec:
               containerPort: {{ $.Values.byconity.ports.rpc }}
             - name: http
               containerPort: {{ $.Values.byconity.ports.http }}
+            - name: tcp-secure
+              containerPort: {{ $.Values.byconity.ports.tcpSecure }}
+            - name: https
+              containerPort: {{ $.Values.byconity.ports.https }}
             - name: exchange
               containerPort: {{ $.Values.byconity.ports.exchange }}
             - name: exchange-status

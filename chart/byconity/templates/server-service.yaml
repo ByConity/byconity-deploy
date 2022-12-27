@@ -14,12 +14,18 @@ spec:
     - name: port0
       port: {{ $.Values.byconity.ports.tcp }}
       targetPort: tcp
-    - name: port2
-      port: {{ $.Values.byconity.ports.http }}
-      targetPort: http
     - name: port1
       port: {{ $.Values.byconity.ports.rpc }}
       targetPort: rpc
+    - name: port2
+      port: {{ $.Values.byconity.ports.http }}
+      targetPort: http
+    - name: port3
+      port: {{ $.Values.byconity.ports.tcpSecure }}
+      targetPort: tcp-secure
+    - name: port4
+      port: {{ $.Values.byconity.ports.https }}
+      targetPort: https
     - name: port5
       port: {{ $.Values.byconity.ports.exchange }}
       targetPort: exchange
@@ -45,12 +51,18 @@ spec:
     - name: port0
       port: {{ $.Values.byconity.ports.tcp }}
       targetPort: tcp
-    - name: port2
-      port: {{ $.Values.byconity.ports.http }}
-      targetPort: http
     - name: port1
       port: {{ $.Values.byconity.ports.rpc }}
       targetPort: rpc
+    - name: port2
+      port: {{ $.Values.byconity.ports.http }}
+      targetPort: http
+    - name: port3
+      port: {{ $.Values.byconity.ports.tcpSecure }}
+      targetPort: tcp-secure
+    - name: port4
+      port: {{ $.Values.byconity.ports.https }}
+      targetPort: https
     - name: port5
       port: {{ $.Values.byconity.ports.exchange }}
       targetPort: exchange

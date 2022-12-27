@@ -12,6 +12,8 @@ byconity:
     tcp: 9000
     http: 8123
     rpc: 8124
+    tcpSecure: 9100
+    https: 9123
     exchange: 9410
     exchangeStatus: 9510
 

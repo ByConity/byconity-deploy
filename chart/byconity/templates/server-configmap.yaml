@@ -29,7 +29,7 @@ data:
     {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service "daemon_manager" $dm_service "resource_manager" $rm_service) }}
     {{- $catalog := dict "catalog" (dict "name_space" (include "byconity.fullname" .)) }}
     {{- $hdfs_addr := dict "hdfs_addr" (printf "hdfs://%s-hdfs-namenode-0.%s-hdfs-namenodes:8020" (include "byconity.fullname" .) (include "byconity.fullname" .)) }}
-    {{- .Files.Get "files/server.yaml" | fromYaml | merge $ports $service_discovery $catalog $hdfs_addr .Values.byconity.server.configOverwrite | toYaml | nindent 4 }}
+    {{- .Files.Get "files/server.yaml" | fromYaml | merge .Values.byconity.server.configOverwrite $hdfs_addr $catalog $service_discovery $ports | toYaml | nindent 4 }}
   users.yaml: |
     {{- .Files.Get "files/users.yaml" | fromYaml | merge .Values.byconity.usersOverwrite | toYaml | nindent 4 }}
   hdfs3.xml: |

@@ -47,6 +47,13 @@ spec:
           livenessProbe:
             exec:
               command: ["/opt/byconity/scripts/lifecycle/liveness-rm"]
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/opt/byconity/scripts/lifecycle/poststart"]
+            preStop:
+              exec:
+                command: ["/opt/byconity/scripts/lifecycle/prestop"]
           volumeMounts:
             - name: run
               mountPath: /etc/service/byconity/run

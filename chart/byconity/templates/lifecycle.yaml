@@ -8,12 +8,14 @@ metadata:
 data:
   poststart: |
     #!/bin/bash
-    set -euo pipefail
+    set -eo pipefail
     {{- .Values.byconity.postStart | nindent 4}}
   prestop: |-
     #!/bin/bash
-    set -euo pipefail
-    curl --fail -X GET "http://127.0.0.1:{{ .Values.byconity.ports.http }}/api/resource_report?action=stop"
+    set -eo pipefail
+    if [[ "${BYCONITY_ROLE}" == "worker" ]]; then
+      curl --fail -X GET "http://127.0.0.1:{{ .Values.byconity.ports.http }}/api/resource_report?action=stop"
+    fi
     {{- .Values.byconity.preStop | nindent 4 }}
   readiness: |
     #!/bin/bash
@@ -26,17 +28,23 @@ data:
     {{- .Values.byconity.liveness | nindent 4 }}
   readiness-tso: |
     #!/bin/bash
+    set -euo pipefail
     curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
   liveness-tso: |
     #!/bin/bash
   readiness-dm: |
     #!/bin/bash
+    set -euo pipefail
     curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
   liveness-dm: |
     #!/bin/bash
   readiness-rm: |
     #!/bin/bash
+    set -euo pipefail
     curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
   liveness-rm: |
     #!/bin/bash
 {{- range $key, $data := .Values.byconity.lifecycleExtraConfig }}

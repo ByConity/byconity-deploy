@@ -1,7 +1,8 @@
 byconity:
+  image: hub.byted.org/clickhouse/byconity:2.0.0.94
+
   server:
     replicas: 1
-    image: hub.byted.org/clickhouse/byconity:2.0.0.27
     securityContext:
       capabilities:
         add:
@@ -18,19 +19,15 @@ byconity:
 
   tso:
     replicas: 1
-    image: hub.byted.org/clickhouse/byconity:2.0.0.27
 
   daemonManager:
     replicas: 1
-    image: hub.byted.org/clickhouse/byconity:2.0.0.27
 
   resourceManager:
     replicas: 1
-    image: hub.byted.org/clickhouse/byconity:2.0.0.27
 
   defaultWorker: &defaultWorker
     replicas: 1
-    image: hub.byted.org/clickhouse/byconity:2.0.0.27
     podAnnotations: {}
     resources: {}
     hostNetwork: false
