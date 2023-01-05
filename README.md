@@ -75,6 +75,14 @@ You can get information here: [Production environment](https://kubernetes.io/doc
 - Install and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) in your local environment
 - Install [helm](https://helm.sh/) in your local environment
 
+### Prepare your storage provider
+
+For best [TCO](https://en.wikipedia.org/wiki/Total_cost_of_ownership) with performance, local disks are preferred to be used with ByConity servers and workers.
+
+> Storage for ByConity servers and workers is for disk cache only, you can delete them any time.
+
+You may use storage providers like [OpenEBS local PV](https://openebs.io/docs/concepts/localpv).
+
 ### Prepare your own helm values files
 
 You may copy from ./chart/byconity/values.yaml and modify some fields like:
@@ -83,14 +91,6 @@ You may copy from ./chart/byconity/values.yaml and modify some fields like:
 - timezone
 - replicas for server/worker
 - hdfs storage request
-
-### Prepare your storage provider
-
-For best [TCO](https://en.wikipedia.org/wiki/Total_cost_of_ownership) with performance, local disks are preferred to be used with ByConity servers and workers.
-
-> Storage for ByConity servers and workers is for disk cache only, you can delete them any time.
-
-You may use storage providers like [OpenEBS local PV](https://openebs.io/docs/concepts/localpv).
 
 ### Initialize the Byconity cluster
 

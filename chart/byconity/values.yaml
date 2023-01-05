@@ -6,7 +6,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 byconity:
-  image: hub.byted.org/clickhouse/byconity:2.0.0.82
+  image: byconity/byconity:0.1.0-beta
+  imagePullPolicy: IfNotPresent
 
   ports:
     tcp: 9000

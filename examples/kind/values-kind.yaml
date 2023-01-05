@@ -1,5 +1,5 @@
 byconity:
-  image: hub.byted.org/clickhouse/byconity:2.0.0.94
+  image: byconity/byconity:0.1.0-beta
 
   server:
     replicas: 1
@@ -92,7 +92,7 @@ fdb:
   clusterSpec:
     processCounts:
       stateless: 1
-      log: 1
+      log: 3
 
 hdfs:
   enabled: true

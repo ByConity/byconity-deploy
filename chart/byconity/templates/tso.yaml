@@ -8,6 +8,7 @@ metadata:
     byconity-role: tso
 spec:
   replicas: {{ .replicas }}
+  # serviceName: {{ include "byconity.fullname" $ }}-tso
   selector:
     matchLabels:
       {{- include "byconity.selectorLabels" $ | nindent 6 }}
@@ -27,6 +28,7 @@ spec:
       containers:
         - name: byconity-tso
           image: {{ coalesce .image $.Values.byconity.image }}
+          imagePullPolicy: {{ $.Values.byconity.imagePullPolicy }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
             - name: BYCONITY_ROLE

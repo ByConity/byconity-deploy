@@ -20,4 +20,6 @@ metadata:
     byconity-role: tso
 data:
   tso.yaml: |
-    {{- .Files.Get "files/tso.yaml" | fromYaml | merge .Values.byconity.tso.configOverwrite | toYaml | nindent 4 }}
+    {{- $tso_service := dict "service" (printf "%s-%s" .Release.Name "tso") "headless_service" (printf "%s-%s-headless" .Release.Name "tso") "psm" (printf "%s-%s" .Release.Name "tso") }}
+    {{- $service_discovery := dict "service_discovery" (dict "tso" $tso_service) }}
+    {{- .Files.Get "files/tso.yaml" | fromYaml | merge .Values.byconity.tso.configOverwrite $service_discovery | toYaml | nindent 4 }}

@@ -20,4 +20,6 @@ metadata:
     byconity-role: resource-manager
 data:
   resource-manager.yaml: |
-    {{- .Files.Get "files/resource-manager.yaml" | fromYaml | merge .Values.byconity.resourceManager.configOverwrite | toYaml | nindent 4 }}
+    {{- $tso_service := dict "service" (printf "%s-%s" .Release.Name "tso") "headless_service" (printf "%s-%s-headless" .Release.Name "tso") "psm" (printf "%s-%s" .Release.Name "tso") }}
+    {{- $service_discovery := dict "service_discovery" (dict "tso" $tso_service) }}
+    {{- .Files.Get "files/resource-manager.yaml" | fromYaml | merge .Values.byconity.resourceManager.configOverwrite $service_discovery | toYaml | nindent 4 }}

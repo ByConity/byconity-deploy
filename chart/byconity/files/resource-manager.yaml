@@ -29,3 +29,10 @@ resource_manager:
         type: write
         num_workers: 1
         worker_groups: ""
+# service_discovery:
+#   mode: dns
+#   cluster: default
+#   tso:
+#     service: xxx
+#     headless_service: xxx
+# zookeeper: {}

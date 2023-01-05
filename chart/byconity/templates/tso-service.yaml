@@ -14,6 +14,12 @@ spec:
     - name: port0
       port: 9000
       targetPort: tcp
+    - name: port1
+      port: 9445  # keeper log
+      targetPort: tcp
+    - name: port2
+      port: 9181  # keeper
+      targetPort: tcp
 
 ---
 apiVersion: v1
@@ -32,4 +38,10 @@ spec:
   ports:
     - name: port0
       port: 9000
+      targetPort: tcp
+    - name: port1
+      port: 9445  # keeper log
+      targetPort: tcp
+    - name: port2
+      port: 9181  # keeper
       targetPort: tcp

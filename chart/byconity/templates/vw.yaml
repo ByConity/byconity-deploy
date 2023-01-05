@@ -32,6 +32,7 @@ spec:
       containers:
         - name: byconity-worker
           image: {{ coalesce .image $.Values.byconity.image }}
+          imagePullPolicy: {{ $.Values.byconity.imagePullPolicy }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
             - name: BYCONITY_ROLE
