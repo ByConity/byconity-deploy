@@ -43,4 +43,14 @@ data:
         </property>
         {{- end }}
     </configuration>
+  cnch-config.yaml: |
+     {{- $ports := dict "tcp_port" $.Values.byconity.ports.tcp "http_port" $.Values.byconity.ports.http "rpc_port" $.Values.byconity.ports.rpc "exchange_port" $.Values.byconity.ports.exchange "exchange_status_port" $.Values.byconity.ports.exchangeStatus }}
+     {{- $server_service := dict "service" (printf "%s-%s" $.Release.Name "server") "headless_service" (printf "%s-%s-headless" $.Release.Name "server") "psm" (printf "%s-%s" $.Release.Name "server") }}
+     {{- $tso_service := dict "service" (printf "%s-%s" $.Release.Name "tso") "headless_service" (printf "%s-%s-headless" $.Release.Name "tso") "psm" (printf "%s-%s" $.Release.Name "tso") }}
+     {{- $dm_service := dict "service" (printf "%s-%s" $.Release.Name "daemon-manager") "headless_service" (printf "%s-%s-headless" $.Release.Name "daemon-manager") "psm" (printf "%s-%s" $.Release.Name "daemon-manager") }}
+     {{- $rm_service := dict "service" (printf "%s-%s" $.Release.Name "resource-manager") "headless_service" (printf "%s-%s-headless" $.Release.Name "resource-manager") "psm" (printf "%s-%s" $.Release.Name "resource-manager") }}
+     {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service "daemon_manager" $dm_service "resource_manager" $rm_service) }}
+     {{- $catalog := dict "catalog" (dict "name_space" (include "byconity.fullname" $)) }}
+     {{- $hdfs_addr := dict "hdfs_addr" (printf "hdfs://%s-hdfs-namenode-0.%s-hdfs-namenodes:8020" (include "byconity.fullname" $) (include "byconity.fullname" $)) }}
+     {{- $.Files.Get "files/cnch-config.yaml" | fromYaml | merge .configOverwrite $hdfs_addr $catalog $service_discovery $ports | toYaml | nindent 4 }}
 {{- end }}

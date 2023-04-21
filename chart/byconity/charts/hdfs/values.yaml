@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 alpine:
-  repository: alpine
+  repository: alpine #if your machine is amd64.please use amd64/alpine
   tag: 3.10.2
   imagePullPolicy: IfNotPresent
 namenode:

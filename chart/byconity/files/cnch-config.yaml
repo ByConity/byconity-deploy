@@ -1,0 +1,34 @@
+
+catalog:
+  name_space: default
+cnch_type: server
+service_discovery:
+  mode: dns
+  cluster: default
+  server:
+    service: xxx
+    headless_service: xxx
+  tso:
+    service: xxx
+    headless_service: xxx
+  vw: {}
+  daemon_manager:
+    service: xxx
+    headless_service: xxx
+  resource_manager:
+    service: xxx
+    headless_service: xxx
+tso_service:
+  tso_window_ms: 3000
+  tso_get_leader_info_interval_ms: 0
+  tso_max_retry_count: 3
+catalog_service:
+  type: fdb
+  fdb:
+    cluster_file: /etc/byconity/fdb/cluster-file
+hdfs_addr: hdfs://{{ include "byconity.fullname" . }}-hdfs-namenode-0.{{ include "byconity.fullname" . }}-hdfs-namenodes:8020
+tcp_port: 9000
+http_port: 8123
+rpc_port: 8124
+exchange_port: 9410
+exchange_status_port: 9510

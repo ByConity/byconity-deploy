@@ -1,0 +1,344 @@
+# Default values for byconity.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+# please replace  storageClassName
+nameOverride: ""
+fullnameOverride: ""
+
+byconity:
+  image: byconity/byconity:latest
+  imagePullPolicy: IfNotPresent
+
+  ports:
+    tcp: 9000
+    http: 8123
+    rpc: 8124
+    tcpSecure: 9100
+    https: 9123
+    exchange: 9410
+    exchangeStatus: 9510
+
+  usersOverwrite:
+    users:
+      default:
+        password: ""
+      probe:
+        password: probe
+
+  server:
+    replicas: 1
+    image: ""
+    podAnnotations: { }
+    resources: { }
+    hostNetwork: false
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+    imagePullSecrets: [ ]
+    securityContext: { }
+    storage:
+      localDisk:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 30Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+      log:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 20Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+    configOverwrite:
+      logger:
+        level: trace
+      disk_cache_strategies:
+        simple:
+          lru_max_size: 429496729600 # 400Gi
+      # timezone: Etc/UTC
+    hdfs3Config:
+      dfs.client.metrics.enable: true
+      dfs.client.metrics.use_domain_socket: true
+      dfs.default.blocksize: "268435456"
+      dfs.read.hedge_read.interval_ms: 120
+      input.connect.timeout: 10000
+      input.read.max.retry: 3
+      input.read.timeout: 6000
+      input.write.timeout: 10000
+      output.close.timeout: 256000
+      output.connect.timeout: 10000
+      output.default.write.retry: 3
+      output.read.timeout: 120000
+      output.write.timeout: 256000
+      rpc.client.connect.retry: 3
+      rpc.client.connect.timeout: 10000
+      rpc.client.read.timeout: 20000
+      rpc.client.timeout: 20000
+      rpc.client.write.timeout: 20000
+
+  tso:
+    replicas: 1
+    image: ""
+    podAnnotations: { }
+    resources: { }
+    hostNetwork: false
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+    imagePullSecrets: [ ]
+    securityContext: { }
+    configOverwrite: { }
+
+  daemonManager:
+    replicas: 1 # Please keep single instance now, daemon manager HA is WIP
+    image: ""
+    podAnnotations: { }
+    resources: { }
+    hostNetwork: false
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+    imagePullSecrets: [ ]
+    securityContext: { }
+    configOverwrite: { }
+
+  resourceManager:
+    replicas: 1
+    image: ""
+    podAnnotations: { }
+    resources: { }
+    hostNetwork: false
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+    imagePullSecrets: [ ]
+    securityContext: { }
+    configOverwrite: { }
+
+  defaultWorker: &defaultWorker
+    replicas: 1
+    image: ""
+    podAnnotations: { }
+    resources: { }
+    hostNetwork: false
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+    imagePullSecrets: [ ]
+    securityContext: { }
+    storage:
+      localDisk:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+      log:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+    configOverwrite:
+      logger:
+        level: trace
+      disk_cache_strategies:
+        simple:
+          lru_max_size: 429496729600 # 400Gi
+      # timezone: Etc/UTC
+    hdfs3Config:
+      dfs.client.metrics.enable: true
+      dfs.client.metrics.use_domain_socket: true
+      dfs.default.blocksize: "268435456"
+      dfs.read.hedge_read.interval_ms: 120
+      input.connect.timeout: 10000
+      input.read.max.retry: 3
+      input.read.timeout: 6000
+      input.write.timeout: 10000
+      output.close.timeout: 256000
+      output.connect.timeout: 10000
+      output.default.write.retry: 3
+      output.read.timeout: 120000
+      output.write.timeout: 256000
+      rpc.client.connect.retry: 3
+      rpc.client.connect.timeout: 10000
+      rpc.client.read.timeout: 20000
+      rpc.client.timeout: 20000
+      rpc.client.write.timeout: 20000
+
+  virtualWarehouses:
+    - <<: *defaultWorker
+      name: vw_default
+      replicas: 1
+    - <<: *defaultWorker
+      name: vw_write
+      replicas: 1
+
+  commonEnvs:
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: "metadata.namespace"
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: "metadata.name"
+    - name: MY_UID
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: "metadata.uid"
+    - name: MY_POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: "status.podIP"
+    - name: MY_HOST_IP
+      valueFrom:
+        fieldRef:
+          # fieldPath: "status.hostIP"
+          fieldPath: "status.podIP"
+    - name: CONSUL_HTTP_HOST
+      valueFrom:
+        fieldRef:
+          fieldPath: "status.hostIP"
+
+  additionalEnvs: [ ]
+
+  additionalVolumes:
+    volumes: [ ]
+    volumeMounts: [ ]
+
+  postStart: ""
+  preStop: ""
+  readiness: ""
+  liveness: ""
+
+  ingress:
+    enabled: false
+    className: ""
+    annotations: { }
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: byconity-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: [ ]
+    #  - secretName: byconity-example-tls
+    #    hosts:
+    #      - byconity-example.local
+
+# For more detailed usage, please check fdb-kubernetes-operator API doc: https://github.com/FoundationDB/fdb-kubernetes-operator/blob/main/docs/cluster_spec.md
+fdb:
+  enabled: true
+  enableCliPod: true
+  version: 7.1.15
+  clusterSpec:
+    mainContainer:
+      imageConfigs:
+        - { version: 7.1.15,baseImage: foundationdb/foundationdb, tag: 7.1.15 }
+    sidecarContainer:
+      imageConfigs:
+        - { version: 7.1.15,baseImage: foundationdb/foundationdb-kubernetes-sidecar, tag: 7.1.15-1 }
+    processCounts:
+      stateless: 3
+      log: 3
+      storage: 3
+    processes:
+      general:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: openebs-hostpath #replace to your storageClassName
+            resources:
+              requests:
+                storage: 20Gi
+
+#    fdb:
+#      clusterSpec:
+#        processes:
+#          general:
+#            volumeClaimTemplate:
+#              spec:
+#                storageClassName: local-device-hdd
+
+fdb-operator:
+  enabled: true
+  resources:
+    limits:
+      cpu: 1
+      memory: 512Mi
+    requests:
+      cpu: 1
+      memory: 512Mi
+  image:
+    repository: foundationdb/fdb-kubernetes-operator
+    tag: v1.9.0
+    pullPolicy: IfNotPresent
+
+hdfs:
+  enabled: true
+  namenode:
+    repository: gchq/hdfs
+    tag: 3.2.2 # managed version
+    resources: { }
+    nodeSelector: { }
+    dataVolumes:
+      count: 1
+      pvcTemplateSpec:
+        storageClassName: openebs-hostpath #replace to your storageClassName
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+    extraEnvVars: { }
+    # Example usage:
+    # HADOOP_HEAPSIZE_MIN: 128m
+    # hadoop.heapsize.min: 128m
+  datanode:
+    nodeCount: 3
+    repository: gchq/hdfs
+    tag: 3.2.2 # managed version
+    resources: { }
+    nodeSelector: { }
+    dataVolumes:
+      count: 1
+      pvcTemplateSpec:
+        storageClassName: openebs-hostpath
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+    extraEnvVars: { }
+    # Example usage:
+    # HADOOP_HEAPSIZE_MIN: 128m
+    # hadoop.heapsize.min: 128m
+  config:
+    hdfsSite:
+      dfs.permissions.enabled: "false"
+      dfs.namenode.datanode.registration.ip-hostname-check: "false"
+  shell:
+    enabled: true
+    repository: gchq/hdfs
+    tag: 3.2.2 # managed version
+    imagePullPolicy: IfNotPresent
+    imagePullSecrets: [ ]
+    resources: { }
+    nodeSelector: { }
+    tolerations: [ ]
+    affinity: { }
+  postInstallCommands: [ ]
+  # - hadoop fs -mkdir -p /accumulo
+  # - hadoop fs -chown accumulo /accumulo
+  # - hadoop fs -chmod 700 /accumulo
+  # - hadoop fs -ls /
