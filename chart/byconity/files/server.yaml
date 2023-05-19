@@ -8,8 +8,7 @@ logger:
   console: true
 listen_host:
   - '::'
-  - 0.0.0.0
-listen_try: 1
+
 
 tcp_port: 9000
 http_port: 8123
