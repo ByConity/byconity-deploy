@@ -96,3 +96,4 @@ query_log:
   flush_interval_milliseconds: 15000
 mark_cache_size: 5368709120
 # zookeeper: {}
+cnch_config: /etc/byconity/cnch-config.yaml
