@@ -37,3 +37,4 @@ tso_service:
 #     raft_logs_level: warning
 #     compress_logs: 1
 # zookeeper: {}
+cnch_config: /etc/byconity/cnch-config.yaml

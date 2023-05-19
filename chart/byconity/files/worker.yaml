@@ -95,3 +95,4 @@ query_log:
   partition_by: event_date
   flush_interval_milliseconds: 15000
 mark_cache_size: 5368709120
+cnch_config: /etc/byconity/cnch-config.yaml

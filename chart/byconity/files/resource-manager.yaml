@@ -36,3 +36,4 @@ resource_manager:
 #     service: xxx
 #     headless_service: xxx
 # zookeeper: {}
+cnch_config: /etc/byconity/cnch-config.yaml

@@ -60,3 +60,4 @@ storage_configuration: # todo remove in the future
           default: server_local_0
           disk: server_local_0
 hdfs3_config: /etc/byconity/hdfs3.xml
+cnch_config: /etc/byconity/cnch-config.yaml
