@@ -6,7 +6,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 byconity:
-  image: byconity/byconity:latest
+  image: byconity/byconity:0.1.0-GA
   imagePullPolicy: IfNotPresent
 
   ports:
