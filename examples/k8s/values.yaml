@@ -6,9 +6,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 byconity:
-  image: byconity/byconity:latest
+  image: cr-bh-cn-beijing.cr.volces.com/byconity/byconity:latest
   imagePullPolicy: IfNotPresent
-
+  hdfs_address: hdfs://hdfs-namenodes.hdfs:8020
   ports:
     tcp: 9000
     http: 8123
@@ -261,7 +261,7 @@ fdb:
             resources:
               requests:
                 storage: 20Gi
-
+#
 #    fdb:
 #      clusterSpec:
 #        processes:

@@ -10,6 +10,26 @@ This repos demonstrates how to deploy a ByConity cluster in your Kubernetes clus
 - Install [helm](https://helm.sh/) in your local environment
 - Install [kind](https://kind.sigs.k8s.io/) and [Docker](https://www.docker.com/)
 
+### File Introduction
+```-- byconity
+|-- Chart.yaml                     # YAML file containing information about the byconity chart
+|-- charts
+|   |-- fdb-operator               # fbd-operator Chart
+|   `-- hdfs                       # hdfs Chart
+|-- files                          # Byconity components config file template
+|   |-- cnch-config.yaml           # config file template for some significant configurations
+|   |-- daemon-manager.yaml        # config file template for daemon-manager
+|   |-- resource-manager.yaml      # config file template for resource-manager
+|   |-- server.yaml                # config file template for cnch-server
+|   |-- tso.yaml                   # config file template for tso
+|   |-- users.yaml                 # config file template for user configutation
+|   `-- worker.yaml                # config file template for byconity-worker
+|-- templates                      # A directory of templates that, when combined with values,
+                                   # will generate valid Kubernetes manifest files.
+`-- values.yaml                    # The default configuration values for this chart
+```
+
+
 ### Use Kind to configure a local Kubernetes cluster
 
 > Warning: kind is not designed for production use.
@@ -87,11 +107,22 @@ You may use storage providers like [OpenEBS local PV](https://openebs.io/docs/co
 ### Prepare your own helm values files
 
 You may copy from ./chart/byconity/values.yaml and modify some fields like:
-
+there is an example located in examples/k8s/values.yaml
 - storageClassName
+  for example
+```dash
+storage:
+    storageClassName: openebs-hostpath
+```
 - timezone
 - replicas for server/worker
 - hdfs storage request
+- if you want to use your own existing hdfs cluster
+  you can override the hdfs address configuration in values.yaml
+```dash
+byconity:
+  hdfs_address: hdfs://your own hdfs:port
+```
 
 ### Initialize the Byconity cluster
 
@@ -153,6 +184,8 @@ byconity:
       name: my-new-vw-write
       replicas: 2
 ```
+
+We can create new Virtual Warehouse while the cluster is running. Please refer to [Byconity ClusterMode](https://byconity.github.io/docs/basic-guide/virtual-warehouse-configuration#cluster-mode)
 
 Apply your helm release with your new values
 

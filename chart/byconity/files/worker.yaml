@@ -54,7 +54,7 @@ catalog_service:
   type: fdb
   fdb:
     cluster_file: /etc/byconity/fdb/cluster-file
-hdfs_addr: hdfs://{{ include "byconity.fullname" . }}-hdfs-namenode-0.{{ include "byconity.fullname" . }}-hdfs-namenodes:8020
+hdfs_addr: hdfs://hdfs-namenodes.hdfs:8020
 storage_configuration:
   disks:
     server_hdfs_disk:
