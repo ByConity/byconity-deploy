@@ -273,7 +273,7 @@ fdb:
 #                storageClassName: local-device-hdd
 
 fdb-operator:
-  enabled: true
+  enabled: false
   resources:
     limits:
       cpu: 1
