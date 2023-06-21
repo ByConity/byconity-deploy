@@ -49,4 +49,5 @@ data:
     {{- $rm_service := dict "service" (printf "%s-%s" .Release.Name "resource-manager") "headless_service" (printf "%s-%s-headless" .Release.Name "resource-manager") "psm" (printf "%s-%s" .Release.Name "resource-manager") }}
     {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service "daemon_manager" $dm_service "resource_manager" $rm_service) }}
     {{- $catalog := dict "catalog" (dict "name_space" (include "byconity.fullname" .)) }}
+    {{- $hdfs_addr := dict "hdfs_addr" .Values.byconity.hdfs_address }}
     {{- .Files.Get "files/cnch-config.yaml" | fromYaml | merge  $hdfs_addr $catalog $service_discovery $ports | toYaml | nindent 4 }}
