@@ -117,7 +117,8 @@ storage:
 - timezone
 - replicas for server/worker
 - hdfs storage request
-- if you want to use your own existing hdfs cluster please set hdfs.enabled=true
+
+  if you want to use your own existing hdfs cluster please set hdfs.enabled=true
   you can override the hdfs address configuration in values.yaml
 ```dash
 byconity:
@@ -126,8 +127,9 @@ hdfs:
   enabled: false
 ```
 - fdb configuration
-- if you want to use your own fdb. please set fdb.enabled=false and fdb-operator.enabled=false
--   you can override the hdfs address configuration in values.yaml
+
+  if you want to use your own fdb. please set fdb.enabled=false and fdb-operator.enabled=false
+  you can refer to values_use_existing_fdb.yaml
 ```dash
 byconity:
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs

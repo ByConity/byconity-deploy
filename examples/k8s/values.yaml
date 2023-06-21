@@ -9,8 +9,8 @@ byconity:
   image: byconity/byconity:latest
   imagePullPolicy: IfNotPresent
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs
-  use_existing_fdb: true
-  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
+#  use_existing_fdb: true
+#  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
   ports:
     tcp: 9000
     http: 8123
