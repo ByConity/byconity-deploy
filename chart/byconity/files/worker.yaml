@@ -54,23 +54,7 @@ catalog_service:
   type: fdb
   fdb:
     cluster_file: /etc/byconity/fdb/cluster-file
-storage_configuration:
-  disks:
-    server_hdfs_disk:
-      path: /var/byconity/data
-      type: hdfs
-    local_disk0:
-      path: /var/byconity/data/
-      type: local
-  policies:
-    default:
-      volumes:
-        hdfs:
-          default: server_hdfs_disk
-          disk: server_hdfs_disk
-        local:
-          default: local_disk0
-          disk: local_disk0
+    
 hdfs3_config: /etc/byconity/hdfs3.xml
 cnch_kafka_log:
   database: cnch_system

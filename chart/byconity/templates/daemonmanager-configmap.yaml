@@ -23,7 +23,7 @@ data:
     {{- $server_service := dict "service" (printf "%s-%s" .Release.Name "server") "headless_service" (printf "%s-%s-headless" .Release.Name "server") "psm" (printf "%s-%s" .Release.Name "server") }}
     {{- $tso_service := dict "service" (printf "%s-%s" .Release.Name "tso") "headless_service" (printf "%s-%s-headless" .Release.Name "tso") "psm" (printf "%s-%s" .Release.Name "tso") }}
     {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service) }}
-    {{- .Files.Get "files/daemon-manager.yaml" | fromYaml | merge .Values.byconity.daemonManager.configOverwrite $service_discovery | toYaml | nindent 4 }}
+    {{- .Files.Get "files/daemon-manager.yaml" | fromYaml | merge .Values.byconity.daemonManager.configOverwrite $.Values.byconity.configOverwrite $service_discovery | toYaml | nindent 4 }}
   hdfs3.xml: |
     <configuration>
         {{- range $key, $val := .Values.byconity.server.hdfs3Config }}
