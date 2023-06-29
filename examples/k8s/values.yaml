@@ -8,7 +8,7 @@ fullnameOverride: ""
 byconity:
   image: byconity/byconity:0.1.0-GA
   imagePullPolicy: IfNotPresent
-  hdfs_address: hdfs://byconitys-hdfs-namenodes:8020 # can using your own hdfs
+  hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs
 #  use_existing_fdb: true
 #  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
   
