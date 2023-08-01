@@ -38,6 +38,18 @@ byconity:
     affinity: { }
     imagePullSecrets: [ ]
     securityContext: { }
+    readiness:
+
+    liveness:
+      exec:
+        command:
+          - bash
+          - /opt/tiger/toutiao/app/scripts/liveness-server.sh
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
     storage:
       localDisk:
         pvcSpec:

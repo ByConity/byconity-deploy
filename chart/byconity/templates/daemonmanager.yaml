@@ -43,11 +43,9 @@ spec:
             - name: tcp
               containerPort: {{ $.Values.byconity.ports.tcp }}
           readinessProbe:
-            exec:
-              command: ["/opt/byconity/scripts/lifecycle/readiness-dm"]
+            { { - .readinessProbe | toYaml | nindent 12 } }
           livenessProbe:
-            exec:
-              command: ["/opt/byconity/scripts/lifecycle/liveness-dm"]
+            { { - .livenessProbe | toYaml | nindent 12 } }
           lifecycle:
             postStart:
               exec:

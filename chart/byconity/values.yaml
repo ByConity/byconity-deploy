@@ -39,6 +39,22 @@ byconity:
     affinity: {}
     imagePullSecrets: []
     securityContext: {}
+    livenessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/liveness" ]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/readiness" ]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     storage:
       localDisk:
         pvcSpec:
@@ -94,12 +110,44 @@ byconity:
     affinity: {}
     imagePullSecrets: []
     securityContext: {}
+    livenessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/liveness-tso" ]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/readiness-tso" ]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     configOverwrite: {}
 
   daemonManager:
     replicas: 1 # Please keep single instance now, daemon manager HA is WIP
     image: ""
     podAnnotations: {}
+    livenessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/liveness-dm" ]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/readiness-dm" ]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     resources: {}
     hostNetwork: false
     nodeSelector: {}
@@ -114,6 +162,22 @@ byconity:
     image: ""
     podAnnotations: {}
     resources: {}
+    livenessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/liveness-rm" ]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/readiness-rm" ]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     hostNetwork: false
     nodeSelector: {}
     tolerations: []
@@ -133,6 +197,22 @@ byconity:
     affinity: {}
     imagePullSecrets: []
     securityContext: {}
+    livenessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/liveness" ]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: [ "/opt/byconity/scripts/lifecycle/readiness" ]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     storage:
       localDisk:
         pvcSpec:
