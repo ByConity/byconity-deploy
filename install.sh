@@ -3,13 +3,14 @@
 #check the resource
 #install crd first
 #install byconity
-#
-root_path=~/go/src/code.byted.org/byconity/byconity-deploy  #path of your repo
+# for first
+# example ./install value_file_path=x chart_path=x enable_fdb=x
+root_path=$(PWD)  #path of your repo
 value_file_path=''      #path of your value-file
 chart_path=''           #path of your chart
-enable_fdb=false        #if need to install fdb,  please set true
-is_upgrade=false
-namespace='byconity-test'  #namespace，default byconity
+enable_fdb=true        #if need to install fdb,  please set true
+is_upgrade=false      #for upgrade please use helm upgrade or set this value into true
+namespace='byconity'  #namespace，default byconity
 DEPLOYMENT_NAME='byconity' #depoyment_name default byconity
 
 
@@ -61,9 +62,7 @@ echo "namespace ${namespace}"
 
 
 #crd_arr=("foundationdbbackups.apps.foundationdb.org" "foundationdbclusters.apps.foundationdb.org" "foundationdbrestores.apps.foundationdb.org")
-
-echo $enable_fdb
-if [ $enable_fdb ];then
+if ${enable_fdb} && ! ${is_upgrade};then
    echo 'start to install fdb crd'
   helm upgrade --install --create-namespace --namespace $namespace byconity -f $root_path/$value_file_path $root_path/$chart_path --set fdb.enabled=false
 
