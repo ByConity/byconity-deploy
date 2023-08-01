@@ -25,7 +25,10 @@ data:
     {{- .Values.byconity.readiness | nindent 4}}
   liveness: |
     #!/bin/bash
-    {{- .Values.byconity.liveness | nindent 4 }}
+    set -euo pipefail
+    QUERY_TIMEOUT=5
+    timeout -k 1 "${QUERY_TIMEOUT}" clickhouse-client -h 127.0.0.1 --port "{{ .Values.byconity.ports.tcp }}" --user "probe" --password "{{ .Values.byconity.usersOverwrite.users.probe.password }}" --max_execution_time "$((QUERY_TIMEOUT-1))" -n -q "select 1" 2>&1
+    {{- .Values.byconity.readiness | nindent 4}}
   readiness-tso: |
     #!/bin/bash
     set -euo pipefail
@@ -33,6 +36,9 @@ data:
     {{- .Values.byconity.readiness | nindent 4}}
   liveness-tso: |
     #!/bin/bash
+    set -euo pipefail
+    curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
   readiness-dm: |
     #!/bin/bash
     set -euo pipefail
@@ -40,6 +46,9 @@ data:
     {{- .Values.byconity.readiness | nindent 4}}
   liveness-dm: |
     #!/bin/bash
+    set -euo pipefail
+    curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
   readiness-rm: |
     #!/bin/bash
     set -euo pipefail
@@ -47,6 +56,9 @@ data:
     {{- .Values.byconity.readiness | nindent 4}}
   liveness-rm: |
     #!/bin/bash
-{{- range $key, $data := .Values.byconity.lifecycleExtraConfig }}
+    set -euo pipefail
+    curl --connect-timeout 3 --fail http://localhost:9000/health
+    {{- .Values.byconity.readiness | nindent 4}}
+  {{- range $key, $data := .Values.byconity.lifecycleExtraConfig }}
   {{ $key | quote }}: {{ $data | quote }}
-{{- end }}
+  {{- end }}
