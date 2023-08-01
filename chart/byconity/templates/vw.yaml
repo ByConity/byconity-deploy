@@ -69,9 +69,9 @@ spec:
             - name: exchange-status
               containerPort: {{ $.Values.byconity.ports.exchangeStatus }}
           readinessProbe:
-            {{ - .readinessProbe | toYaml | nindent 12 }}
+            {{- .readinessProbe | toYaml | nindent 12 }}
           livenessProbe:
-            {{ - .livenessProbe | toYaml | nindent 12 }}
+            {{- .livenessProbe | toYaml | nindent 12 }}
           lifecycle:
             postStart:
               exec:
