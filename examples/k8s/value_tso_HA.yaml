@@ -102,13 +102,7 @@ byconity:
     replicas: 3
     image: ""
     podAnnotations: { }
-    resources:
-      limits:
-        cpu: "4"
-        memory: 6Gi
-      requests:
-        cpu: "4"
-        memory: 6Gi
+    resources: { }
     hostNetwork: false
     nodeSelector: { }
     tolerations: [ ]
