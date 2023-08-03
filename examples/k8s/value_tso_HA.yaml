@@ -324,8 +324,7 @@ fdb:
   enabled: true
   enableCliPod: true
   version: 7.1.15
-  imagePullSecrets:
-    - name: bh-img
+  imagePullSecrets: [ ]
   clusterSpec:
     mainContainer:
       imageConfigs:
@@ -368,8 +367,7 @@ fdb-operator:
     tag: v1.9.0
     pullPolicy: IfNotPresent
 
-  imagePullSecrets:
-    - name: bh-img
+  imagePullSecrets: [ ]
   initContainers:
     6.2:
       image:
