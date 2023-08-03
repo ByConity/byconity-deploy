@@ -127,6 +127,25 @@ byconity:
       successThreshold: 1
       timeoutSeconds: 10
     configOverwrite: {}
+    additionalVolumes: { }
+    storage:
+      localDisk:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 500Gi
+          storageClassName: your-storage-class
+      log:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+          storageClassName: your-storage-class
+
 
   daemonManager:
     replicas: 1 # Please keep single instance now, daemon manager HA is WIP

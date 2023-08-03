@@ -1,6 +1,6 @@
 {{- with .Values.byconity.tso }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "byconity.fullname" $ }}-tso
   labels:
@@ -8,13 +8,13 @@ metadata:
     byconity-role: tso
 spec:
   replicas: {{ .replicas }}
-  # serviceName: {{ include "byconity.fullname" $ }}-tso
+  serviceName: {{ include "byconity.fullname" $ }}-tso
   selector:
     matchLabels:
       {{- include "byconity.selectorLabels" $ | nindent 6 }}
       byconity-role: tso
-  strategy:
-    type: Recreate
+  updateStrategy:
+    type: RollingUpdate
   template:
     metadata:
       {{- with .podAnnotations }}
@@ -68,8 +68,12 @@ spec:
               mountPath: /opt/byconity/scripts/lifecycle
             - name: fdb-config
               mountPath: /etc/byconity/fdb
-          {{- if $.Values.byconity.additionalVolumes.volumeMounts }}
-            {{- toYaml $.Values.byconity.additionalVolumes.volumeMounts | nindent 12 }}
+            - name: local-disk
+              mountPath: /var/byconity
+            - name: log
+              mountPath: /var/log/byconity
+          {{- if $.Values.byconity.tso.additionalVolumes.volumeMounts }}
+            {{- toYaml $.Values.byconity.tso.additionalVolumes.volumeMounts | nindent 12 }}
           {{- end }}
           {{- if .securityContext }}
           securityContext:
@@ -90,8 +94,8 @@ spec:
         - name: fdb-config
           configMap:
             name: {{ include "byconity.fullname" $ }}-fdb-config
-      {{- if $.Values.byconity.additionalVolumes.volumes }}
-        {{- toYaml $.Values.byconity.additionalVolumes.volumes | nindent 8 }}
+      {{- if $.Values.byconity.tso.additionalVolumes.volumes }}
+        {{- toYaml $.Values.byconity.tso.additionalVolumes.volumes | nindent 8 }}
       {{- end }}
       hostNetwork: {{ .hostNetwork }}
       {{- with .nodeSelector }}
@@ -110,4 +114,16 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: local-disk
+      spec:
+        {{- toYaml .storage.localDisk.pvcSpec | nindent 8 }}
+    - metadata:
+        name: log
+      spec:
+        {{- toYaml .storage.log.pvcSpec | nindent 8 }}
+    {{- if $.Values.byconity.tso.additionalVolumeClaimTemplates }}
+    {{- toYaml $.Values.byconity.tso.additionalVolumeClaimTemplates | nindent 4 }}
+    {{- end }}
 {{- end }}

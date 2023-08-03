@@ -9,8 +9,8 @@ byconity:
   image: byconity/byconity:0.1.0-GA
   imagePullPolicy: IfNotPresent
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs
-#  use_existing_fdb: true
-#  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
+  #  use_existing_fdb: true
+  #fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
   ports:
     tcp: 9000
     http: 8123
@@ -28,7 +28,7 @@ byconity:
         password: probe
 
   server:
-    replicas: 1
+    replicas: 2
     image: ""
     podAnnotations: { }
     resources: { }
@@ -38,18 +38,22 @@ byconity:
     affinity: { }
     imagePullSecrets: [ ]
     securityContext: { }
-    readiness:
-
-    liveness:
+    livenessProbe:
       exec:
-        command:
-          - bash
-          - /opt/tiger/toutiao/app/scripts/liveness-server.sh
+        command: ["/opt/byconity/scripts/lifecycle/liveness"]
       failureThreshold: 6
       initialDelaySeconds: 5
       periodSeconds: 10
       successThreshold: 1
       timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: ["/opt/byconity/scripts/lifecycle/readiness"]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
     storage:
       localDisk:
         pvcSpec:
@@ -95,18 +99,33 @@ byconity:
       rpc.client.write.timeout: 20000
 
   tso:
-    replicas: 1
+    replicas: 3
     image: ""
     podAnnotations: { }
-    resources: { }
+    resources:
+      limits:
+        cpu: "4"
+        memory: 6Gi
+      requests:
+        cpu: "4"
+        memory: 6Gi
     hostNetwork: false
     nodeSelector: { }
     tolerations: [ ]
     affinity: { }
     imagePullSecrets: [ ]
     securityContext: { }
-    configOverwrite: { }
-    additionalVolumes: { }
+    additionalVolumeClaimTemplates:
+      - metadata:
+          name: coordination
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+
     storage:
       localDisk:
         pvcSpec:
@@ -114,7 +133,7 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 10Gi
+              storage: 30Gi
           storageClassName: openebs-hostpath #replace to your storageClassName
       log:
         pvcSpec:
@@ -122,9 +141,38 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 10Gi
+              storage: 20Gi
           storageClassName: openebs-hostpath #replace to your storageClassName
-
+    additionalVolumes:
+      volumes:
+      volumeMounts:
+        - name: coordination
+          mountPath: /var/byconity/tso/coordination
+    configOverwrite:
+      zookeeper: { }
+      keeper_server:
+        server_id: 0
+        tcp_port: 9181
+        log_storage_path: /var/byconity/log/coordination
+        snapshot_storage_path: /var/byconity/snapshots
+        coordination_settings:
+          operation_timeout_ms: 10000
+          session_timeout_ms: 30000
+          raft_logs_level: warning
+          compress_logs: 1
+        raft_configuration:
+          - server:
+              id: 0
+              hostname: byconity-tso-0.byconity-tso.byconity-test.svc.cluster.local
+              port: 9445
+          - server:
+              id: 1
+              hostname: byconity-tso-1.byconity-tso.byconity-test.svc.cluster.local
+              port: 9445
+          - server:
+              id: 2
+              hostname: byconity-tso-2.byconity-tso.byconity-test.svc.cluster.local
+              port: 9445
 
 
   daemonManager:
@@ -141,7 +189,7 @@ byconity:
     configOverwrite: { }
 
   resourceManager:
-    replicas: 1
+    replicas: 2
     image: ""
     podAnnotations: { }
     resources: { }
@@ -276,6 +324,8 @@ fdb:
   enabled: true
   enableCliPod: true
   version: 7.1.15
+  imagePullSecrets:
+    - name: bh-img
   clusterSpec:
     mainContainer:
       imageConfigs:
@@ -318,8 +368,31 @@ fdb-operator:
     tag: v1.9.0
     pullPolicy: IfNotPresent
 
+  imagePullSecrets:
+    - name: bh-img
+  initContainers:
+    6.2:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 6.2.30-1
+        pullPolicy: IfNotPresent
+    6.3:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 6.3.23-1
+        pullPolicy: IfNotPresent
+    7.1:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 7.1.15-1
+        pullPolicy: IfNotPresent
+
 hdfs:
   enabled: true
+  alpine:
+    repository: alpine  #if your machine is amd64.please use amd64/alpine
+    tag: 3.10.2
+    imagePullPolicy: IfNotPresent
   namenode:
     repository: gchq/hdfs
     tag: 3.2.2 # managed version
