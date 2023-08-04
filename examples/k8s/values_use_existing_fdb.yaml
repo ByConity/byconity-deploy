@@ -94,6 +94,25 @@ byconity:
     imagePullSecrets: [ ]
     securityContext: { }
     configOverwrite: { }
+    additionalVolumes: { }
+    storage:
+      localDisk:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+      log:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: openebs-hostpath #replace to your storageClassName
+
 
   daemonManager:
     replicas: 1 # Please keep single instance now, daemon manager HA is WIP
