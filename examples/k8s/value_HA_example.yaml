@@ -99,15 +99,15 @@ byconity:
       rpc.client.write.timeout: 20000
 
   tso:
-    replicas: 3
+    replicas: 3  #Currently fixed at 3 for HA
     image: ""
     podAnnotations: { }
     resources:
       limits:
-        cpu: "3"
+        cpu: "3"  # >=3
         memory: 2Gi
       requests:
-        cpu: "3"
+        cpu: "3"  # >=3
         memory: 2Gi
     hostNetwork: false
     nodeSelector: { }
@@ -115,7 +115,7 @@ byconity:
     affinity: { }
     imagePullSecrets: [ ]
     securityContext: { }
-    additionalVolumeClaimTemplates:
+    additionalVolumeClaimTemplates:   #add new pvc for coordination
       - metadata:
           name: coordination
         spec:
@@ -143,16 +143,16 @@ byconity:
             requests:
               storage: 20Gi
           storageClassName: openebs-hostpath #replace to your storageClassName
-    additionalVolumes:
+    additionalVolumes:    #add new volume for coordination
       volumes:
       volumeMounts:
         - name: coordination
           mountPath: /var/byconity/tso/coordination
     configOverwrite:
-      zookeeper: { }
-      keeper_server:
+      zookeeper: { } #need to add this empty tag
+      keeper_server:   #configuration for HA
         server_id: 0
-        tcp_port: 9181
+        tcp_port: 9181  #service byconity-tso-headless port2
         log_storage_path: /var/byconity/log/coordination
         snapshot_storage_path: /var/byconity/snapshots
         coordination_settings:
@@ -162,17 +162,17 @@ byconity:
           compress_logs: 1
         raft_configuration:
           - server:
-              id: 0
-              hostname: byconity-tso-0.byconity-tso.byconity-test.svc.cluster.local
-              port: 9445
+              id: 0   #corresponds to the index of the pod. start from 0
+              hostname: byconity-tso-0.byconity-tso.byconity.svc.cluster.local   # the domain of the pod.can enter the pod and ping its own to get this value
+              port: 9445  #service byconity-tso-headless port1
           - server:
               id: 1
-              hostname: byconity-tso-1.byconity-tso.byconity-test.svc.cluster.local
-              port: 9445
+              hostname: byconity-tso-1.byconity-tso.byconity.svc.cluster.local  # the domain of the pod.can enter the pod and ping its own to get this value
+              port: 9445  #service byconity-tso-headless port1
           - server:
               id: 2
-              hostname: byconity-tso-2.byconity-tso.byconity-test.svc.cluster.local
-              port: 9445
+              hostname: byconity-tso-2.byconity-tso.byconity.svc.cluster.local  # the domain of the pod.can enter the pod and ping its own to get this value
+              port: 9445  #service byconity-tso-headless port1
 
 
   daemonManager:
