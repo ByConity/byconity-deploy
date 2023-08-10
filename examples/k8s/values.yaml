@@ -11,6 +11,41 @@ byconity:
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs
 #  use_existing_fdb: true
 #  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
+  
+  configOverwrite:
+    storage_configuration:
+      cnch_default_policy: cnch_default_hdfs
+      disks:
+        server_hdfs_disk:
+          path: /var/byconity/data
+          type: hdfs
+        server_local_0:
+          path: /var/byconity/data/
+          type: local
+        # 
+        # server_s3_disk_0:
+        #   path: byconity0
+        #   endpoint: http://xxx.xxx.xxx.xxx:9000
+        #   region: cn-beijing
+        #   bucket: cch-test
+        #   ak_id: minio
+        #   ak_secret: minio123
+        #   type: bytes3
+        #   virtual_host_style: false
+
+      policies:
+        cnch_default_hdfs:
+          volumes:
+            hdfs:
+              default: server_hdfs_disk
+              disk: server_hdfs_disk
+        # cnch_default_s3:
+        #   volumes:
+        #     bytes3:
+        #       default: server_s3_disk_0
+        #       disk: server_s3_disk_0
+
+
   ports:
     tcp: 9000
     http: 8123

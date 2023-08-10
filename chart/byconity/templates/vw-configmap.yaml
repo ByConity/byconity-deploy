@@ -31,7 +31,7 @@ data:
     {{- $service_discovery := dict "service_discovery" (dict "server" $server_service "tso" $tso_service "daemon_manager" $dm_service "resource_manager" $rm_service) }}
     {{- $catalog := dict "catalog" (dict "name_space" (include "byconity.fullname" $)) }}
     {{- $hdfs_addr := dict "hdfs_addr" $.Values.byconity.hdfs_address }}
-    {{- $.Files.Get "files/worker.yaml" | fromYaml | merge .configOverwrite $hdfs_addr $catalog $service_discovery $ports | toYaml | nindent 4 }}
+    {{- $.Files.Get "files/worker.yaml" | fromYaml | merge .configOverwrite $.Values.byconity.configOverwrite $hdfs_addr $catalog $service_discovery $ports | toYaml | nindent 4 }}
   users.yaml: |
     {{- $.Files.Get "files/users.yaml" | fromYaml | merge $.Values.byconity.usersOverwrite | toYaml | nindent 4 }}
   hdfs3.xml: |

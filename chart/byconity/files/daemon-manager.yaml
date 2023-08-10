@@ -42,22 +42,6 @@ daemon_manager:
         interval: 5000
       - name: TXN_GC
         interval: 600000
-storage_configuration: # todo remove in the future
-  disks:
-    server_hdfs_disk:
-      path: /var/byconity/data
-      type: bytehdfs
-    server_local_0:
-      path: /var/byconity/data/
-      type: local
-  policies:
-    default:
-      volumes:
-        hdfs:
-          default: server_hdfs_disk
-          disk: server_hdfs_disk
-        local:
-          default: server_local_0
-          disk: server_local_0
+
 hdfs3_config: /etc/byconity/hdfs3.xml
 cnch_config: /etc/byconity/cnch-config.yaml
