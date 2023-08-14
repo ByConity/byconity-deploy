@@ -6,7 +6,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 byconity:
-  image: byconity/byconity:0.1.0-beta
+  image: byconity/byconity:stable
   imagePullPolicy: IfNotPresent
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020  #default hdfs
   #  if you want to use your own fdb please add the following 2 configurations
