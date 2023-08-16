@@ -1,5 +1,5 @@
 byconity:
-  image: byconity/byconity:0.1.0-beta
+  image: byconity/byconity:0.1.0-GA
 
   server:
     replicas: 1
@@ -11,14 +11,37 @@ byconity:
       localDisk:
         pvcSpec:
           storageClassName: standard
+          resources:
+            requests:
+              storage: 10Gi
       log:
         pvcSpec:
           storageClassName: standard
+          resources:
+            requests:
+              storage: 10Gi
     configOverwrite:
       timezone: Asia/Shanghai
 
   tso:
     replicas: 1
+    storage:
+      localDisk:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: standard #replace to your storageClassName
+      log:
+        pvcSpec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: standard #replace to your storageClassName
 
   daemonManager:
     replicas: 1
@@ -43,7 +66,7 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 500Gi
+              storage: 10Gi
           storageClassName: standard
       log:
         pvcSpec:
@@ -51,7 +74,7 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 50Gi
+              storage: 10Gi
           storageClassName: standard
     configOverwrite:
       logger:
@@ -87,12 +110,33 @@ byconity:
     - <<: *defaultWorker
       name: vw_write
       replicas: 1
-
+fdb-operator:
+  enabled: true
+  resources:
+    limits:
+      cpu: 1
+      memory: 512Mi
+    requests:
+      cpu: 1
+      memory: 512Mi
+  image:
+    repository: foundationdb/fdb-kubernetes-operator
+    tag: v1.9.0
+    pullPolicy: IfNotPresent
 fdb:
   clusterSpec:
     processCounts:
       stateless: 1
       log: 3
+      storage: 3
+    processes:
+      general:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: standard #replace to your storageClassName
+            resources:
+              requests:
+                storage: 10Gi
 
 hdfs:
   enabled: true
@@ -107,3 +151,6 @@ hdfs:
       count: 1
       pvcTemplateSpec:
         storageClassName: standard
+        resources:
+          requests:
+            storage: 10Gi
