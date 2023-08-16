@@ -51,14 +51,14 @@ byconity:
 
   defaultWorker: &defaultWorker
     replicas: 1
-    podAnnotations: { }
-    resources: { }
+    podAnnotations: {}
+    resources: {}
     hostNetwork: false
-    nodeSelector: { }
-    tolerations: [ ]
-    affinity: { }
-    imagePullSecrets: [ ]
-    securityContext: { }
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    imagePullSecrets: []
+    securityContext: {}
     storage:
       localDisk:
         pvcSpec:
