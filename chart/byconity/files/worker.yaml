@@ -8,6 +8,8 @@ logger:
   console: true
 listen_host:
   - '::'
+  - '0.0.0.0'
+listen_try: 1
 
 tcp_port: 9000
 http_port: 8123
@@ -54,7 +56,7 @@ catalog_service:
   type: fdb
   fdb:
     cluster_file: /etc/byconity/fdb/cluster-file
-    
+
 hdfs3_config: /etc/byconity/hdfs3.xml
 cnch_kafka_log:
   database: cnch_system
