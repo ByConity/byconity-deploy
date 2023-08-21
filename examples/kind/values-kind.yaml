@@ -1,5 +1,5 @@
 byconity:
-  image: byconity/byconity:0.1.0-GA
+  image: byconity/byconity:stable
 
   server:
     replicas: 1
