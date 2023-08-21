@@ -8,7 +8,8 @@ logger:
   console: true
 listen_host:
   - '::'
-
+  - '0.0.0.0'
+listen_try: 1
 
 tcp_port: 9000
 http_port: 8123
@@ -77,5 +78,5 @@ query_log:
   partition_by: event_date
   flush_interval_milliseconds: 15000
 mark_cache_size: 5368709120
-# zookeeper: {}
+#zookeeper: {}
 cnch_config: /etc/byconity/cnch-config.yaml
