@@ -34,7 +34,7 @@ data:
     {{- .Files.Get "files/users.yaml" | fromYaml | merge .Values.byconity.usersOverwrite | toYaml | nindent 4 }}
   hdfs3.xml: |
     <configuration>
-        {{- range $key, $val := .Values.byconity.server.hdfs3Config }}
+        {{- range $key, $val := $.Values.byconity.hdfs3Config }}
         <property>
             <name>{{ $key }}</name>
             <value>{{ $val }}</value>

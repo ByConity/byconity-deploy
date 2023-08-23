@@ -83,25 +83,6 @@ byconity:
         simple:
           lru_max_size: 429496729600 # 400Gi
       timezone: Asia/Shanghai
-    hdfs3Config:
-      dfs.client.metrics.enable: true
-      dfs.client.metrics.use_domain_socket: true
-      dfs.default.blocksize: "268435456"
-      dfs.read.hedge_read.interval_ms: 120
-      input.connect.timeout: 10000
-      input.read.max.retry: 3
-      input.read.timeout: 6000
-      input.write.timeout: 10000
-      output.close.timeout: 256000
-      output.connect.timeout: 10000
-      output.default.write.retry: 3
-      output.read.timeout: 120000
-      output.write.timeout: 256000
-      rpc.client.connect.retry: 3
-      rpc.client.connect.timeout: 10000
-      rpc.client.read.timeout: 20000
-      rpc.client.timeout: 20000
-      rpc.client.write.timeout: 20000
 
   virtualWarehouses:
     - <<: *defaultWorker
