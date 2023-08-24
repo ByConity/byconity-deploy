@@ -26,7 +26,6 @@ catalog_service:
   type: fdb
   fdb:
     cluster_file: /etc/byconity/fdb/cluster-file
-hdfs_addr: xx
 tcp_port: 9000
 http_port: 8123
 rpc_port: 8124
