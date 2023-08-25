@@ -9,8 +9,30 @@ byconity:
   image: byconity/byconity:stable
   imagePullPolicy: IfNotPresent
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020 # can using your own hdfs
+#  if “hdfs_ha_nameservice” is configured, the “hdfs_address” configuration will be ineffective
+#  hdfs_ha_nameservice: hdfs_service  # after configuring “namespace”, you need to configure the address of the namespace in “hdfs3Config”
   use_existing_fdb: true
   fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
+  hdfs3Config:
+    dfs.client.metrics.enable: true
+    dfs.client.metrics.use_domain_socket: true
+    dfs.default.blocksize: "268435456"
+    dfs.read.hedge_read.interval_ms: 120
+    input.connect.timeout: 10000
+    input.read.max.retry: 3
+    input.read.timeout: 6000
+    input.write.timeout: 10000
+    output.close.timeout: 256000
+    output.connect.timeout: 10000
+    output.default.write.retry: 3
+    output.read.timeout: 120000
+    output.write.timeout: 256000
+    rpc.client.connect.retry: 3
+    rpc.client.connect.timeout: 10000
+    rpc.client.read.timeout: 20000
+    rpc.client.timeout: 20000
+    rpc.client.write.timeout: 20000
+  
   configOverwrite:
     storage_configuration:
       cnch_default_policy: cnch_default_hdfs
@@ -95,25 +117,6 @@ byconity:
         simple:
           lru_max_size: 429496729600 # 400Gi
       # timezone: Etc/UTC
-    hdfs3Config:
-      dfs.client.metrics.enable: true
-      dfs.client.metrics.use_domain_socket: true
-      dfs.default.blocksize: "268435456"
-      dfs.read.hedge_read.interval_ms: 120
-      input.connect.timeout: 10000
-      input.read.max.retry: 3
-      input.read.timeout: 6000
-      input.write.timeout: 10000
-      output.close.timeout: 256000
-      output.connect.timeout: 10000
-      output.default.write.retry: 3
-      output.read.timeout: 120000
-      output.write.timeout: 256000
-      rpc.client.connect.retry: 3
-      rpc.client.connect.timeout: 10000
-      rpc.client.read.timeout: 20000
-      rpc.client.timeout: 20000
-      rpc.client.write.timeout: 20000
 
   tso:
     replicas: 1
@@ -208,25 +211,6 @@ byconity:
         simple:
           lru_max_size: 429496729600 # 400Gi
       # timezone: Etc/UTC
-    hdfs3Config:
-      dfs.client.metrics.enable: true
-      dfs.client.metrics.use_domain_socket: true
-      dfs.default.blocksize: "268435456"
-      dfs.read.hedge_read.interval_ms: 120
-      input.connect.timeout: 10000
-      input.read.max.retry: 3
-      input.read.timeout: 6000
-      input.write.timeout: 10000
-      output.close.timeout: 256000
-      output.connect.timeout: 10000
-      output.default.write.retry: 3
-      output.read.timeout: 120000
-      output.write.timeout: 256000
-      rpc.client.connect.retry: 3
-      rpc.client.connect.timeout: 10000
-      rpc.client.read.timeout: 20000
-      rpc.client.timeout: 20000
-      rpc.client.write.timeout: 20000
 
   virtualWarehouses:
     - <<: *defaultWorker
