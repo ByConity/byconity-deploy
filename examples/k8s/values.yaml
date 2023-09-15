@@ -52,7 +52,7 @@ byconity:
         #   ak_id: minio
         #   ak_secret: minio123
         #   type: bytes3
-        #   virtual_host_style: false
+        #   is_virtual_hosted_style: false
 
       policies:
         cnch_default_hdfs:
