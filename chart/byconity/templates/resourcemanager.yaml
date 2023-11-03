@@ -26,8 +26,8 @@ spec:
     spec:
       containers:
         - name: byconity-resource-manager
-          image: {{ coalesce .image $.Values.byconity.image }}
-          imagePullPolicy: {{ $.Values.byconity.imagePullPolicy }}
+          image: {{ $.Values.image.repository }}:{{ $.Values.image.tag }}
+          imagePullPolicy: {{ $.Values.image.imagePullPolicy }}
           env:
             {{- toYaml $.Values.byconity.commonEnvs | nindent 12 }}
             - name: BYCONITY_ROLE

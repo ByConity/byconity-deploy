@@ -26,5 +26,7 @@ appVersion: "1.16.0"
 dependencies:
 - name: hdfs
   condition: hdfs.enabled
+  version: 1.0.0
 - name: fdb-operator
   condition: fdb-operator.enabled
+  version: 0.2.0
