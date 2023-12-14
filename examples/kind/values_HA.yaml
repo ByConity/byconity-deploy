@@ -1,3 +1,4 @@
+
 image:
   repository: byconity/byconity
   tag: stable
@@ -5,7 +6,7 @@ image:
 
 byconity:
   server:
-    replicas: 1
+    replicas: 2
     securityContext:
       capabilities:
         add:
@@ -25,9 +26,34 @@ byconity:
               storage: 10Gi
     configOverwrite:
       timezone: Asia/Shanghai
+    livenessProbe:
+      exec:
+        command: ["/opt/byconity/scripts/lifecycle/liveness"]
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 20
+    readinessProbe:
+      exec:
+        command: ["/opt/byconity/scripts/lifecycle/readiness"]
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
 
   tso:
-    replicas: 1
+    replicas: 3
+    image: ""
+    podAnnotations: { }
+    resources:
+      limits:
+        cpu: "3"  # >=3
+        memory: 2Gi
+      requests:
+        cpu: "3"  # >=3
+        memory: 2Gi
     storage:
       localDisk:
         pvcSpec:
@@ -35,7 +61,7 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi
+              storage: 15Gi
           storageClassName: standard #replace to your storageClassName
       log:
         pvcSpec:
@@ -43,14 +69,14 @@ byconity:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi
+              storage: 10Gi
           storageClassName: standard #replace to your storageClassName
 
   daemonManager:
     replicas: 1
 
   resourceManager:
-    replicas: 1
+    replicas: 2
 
   defaultWorker: &defaultWorker
     replicas: 1
@@ -107,6 +133,22 @@ fdb-operator:
     repository: foundationdb/fdb-kubernetes-operator
     tag: v1.9.0
     pullPolicy: IfNotPresent
+  initContainers:
+    6.2:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 6.2.30-1
+        pullPolicy: IfNotPresent
+    6.3:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 6.3.23-1
+        pullPolicy: IfNotPresent
+    7.1:
+      image:
+        repository: foundationdb/foundationdb-kubernetes-sidecar
+        tag: 7.1.15-1
+        pullPolicy: IfNotPresent
 fdb:
   clusterSpec:
     processCounts:
@@ -124,6 +166,10 @@ fdb:
 
 hdfs:
   enabled: true
+  alpine:
+    repository: alpine  #if your machine is amd64.please use amd64/alpine
+    tag: 3.10.2
+    imagePullPolicy: IfNotPresent
   namenode:
     dataVolumes:
       count: 1

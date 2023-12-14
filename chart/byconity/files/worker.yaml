@@ -29,25 +29,7 @@ tmp_path: /var/byconity/tmp
 users_config: /etc/byconity/users.yaml
 dictionaries_config: '*_dictionary.xml'
 format_schema_path: /var/byconity/format_schemas/
-catalog:
-  name_space: default
 cnch_type: worker
-service_discovery:
-  mode: dns
-  cluster: default
-  server:
-    service: xxx
-    headless_service: xxx
-  tso:
-    service: xxx
-    headless_service: xxx
-  vw: {}
-  daemon_manager:
-    service: xxx
-    headless_service: xxx
-  resource_manager:
-    service: xxx
-    headless_service: xxx
 tso_service:
   tso_window_ms: 3000
   tso_get_leader_info_interval_ms: 0
