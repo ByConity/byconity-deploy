@@ -7,8 +7,6 @@ logger:
   count: 10
   console: true
 listen_host: "::"
-catalog:
-  name_space: default  # todo
 catalog_service:
   type: fdb
   fdb:
@@ -29,11 +27,4 @@ resource_manager:
         type: write
         num_workers: 1
         worker_groups: ""
-# service_discovery:
-#   mode: dns
-#   cluster: default
-#   tso:
-#     service: xxx
-#     headless_service: xxx
-# zookeeper: {}
 cnch_config: /etc/byconity/cnch-config.yaml

@@ -138,7 +138,7 @@ byconity:
       # timezone: Etc/UTC
 
   tso:
-    replicas: 3  #Currently fixed at 3 for HA
+    replicas: 3
     image: ""
     podAnnotations: { }
     resources:
@@ -187,32 +187,6 @@ byconity:
       volumeMounts:
         - name: coordination
           mountPath: /var/byconity/tso/coordination
-    configOverwrite:
-      zookeeper: { } #need to add this empty tag
-      keeper_server:   #configuration for HA
-        server_id: 0
-        tcp_port: 9181  #service byconity-tso-headless port2
-        log_storage_path: /var/byconity/log/coordination
-        snapshot_storage_path: /var/byconity/snapshots
-        coordination_settings:
-          operation_timeout_ms: 10000
-          session_timeout_ms: 30000
-          raft_logs_level: warning
-          compress_logs: 1
-        raft_configuration:
-          - server:
-              id: 0   #corresponds to the index of the pod. start from 0
-              hostname: byconity-tso-0.byconity-tso.byconity.svc.cluster.local   # the domain of the pod.can enter the pod and ping its own to get this value
-              port: 9445  #service byconity-tso-headless port1
-          - server:
-              id: 1
-              hostname: byconity-tso-1.byconity-tso.byconity.svc.cluster.local  # the domain of the pod.can enter the pod and ping its own to get this value
-              port: 9445  #service byconity-tso-headless port1
-          - server:
-              id: 2
-              hostname: byconity-tso-2.byconity-tso.byconity.svc.cluster.local  # the domain of the pod.can enter the pod and ping its own to get this value
-              port: 9445  #service byconity-tso-headless port1
-
 
   daemonManager:
     replicas: 1 # Please keep single instance now, daemon manager HA is WIP

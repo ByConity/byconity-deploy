@@ -9,12 +9,6 @@ logger:
 listen_host: "::"
 path: /var/byconity/tso
 tmp_path: /var/byconity/tmp
-service_discovery:
-  mode: dns
-  cluster: default
-  # tso:
-  #   service: xxx
-  #   headless_service: xxx
 tso_service:
   type: fdb
   fdb:
@@ -38,3 +32,7 @@ tso_service:
 #     compress_logs: 1
 # zookeeper: {}
 cnch_config: /etc/byconity/cnch-config.yaml
+catalog_service:
+  type: fdb
+  fdb:
+    cluster_file: /etc/byconity/fdb/cluster-file

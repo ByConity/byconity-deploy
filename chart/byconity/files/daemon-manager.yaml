@@ -9,16 +9,6 @@ logger:
 listen_host: "::"
 path: /var/byconity
 tmp_path: /var/byconity/tmp/
-catalog:
-  name_space: default
-service_discovery:
-  mode: dns
-  server:
-    service: xxx
-    headless_service: xxx
-  tso:
-    service: xxx
-    headless_service: xxx
 catalog_service:
   type: fdb
   fdb:
