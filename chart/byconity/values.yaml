@@ -13,7 +13,7 @@ image:
 byconity:
   hdfs_address: hdfs://byconity-hdfs-namenodes:8020  #default hdfs
   #  if “hdfs_ha_nameservice” is configured, the “hdfs_address” configuration will be ineffective
-  #  hdfs_ha_nameservice: hdfs_service  # after configuring “namespace”, you need to configure the address of the namespace in “hdfs3Config” 
+  #  hdfs_ha_nameservice: hdfs_service  # after configuring “namespace”, you need to configure the address of the namespace in “hdfs3Config”
   #  if you want to use your own fdb please add the following 2 configurations
   #  use_existing_fdb: true
   #  fdb_cluster_file: byconity_fdb:Is0hBgl6iICdHuspBmhAODmD5WISXKzI@192.168.224.150:4501,192.168.226.83:4501,192.168.228.152:4501
@@ -36,7 +36,7 @@ byconity:
     rpc.client.read.timeout: 20000
     rpc.client.timeout: 20000
     rpc.client.write.timeout: 20000
-  
+
   configOverwrite:
     storage_configuration:
       cnch_default_policy: cnch_default_hdfs
@@ -47,7 +47,7 @@ byconity:
         server_local_0:
           path: /var/byconity/data/
           type: local
-        # 
+        #
         # server_s3_disk_0:
         #   path: byconity0
         #   endpoint: http://xxx.xxx.xxx.xxx:9000
@@ -64,6 +64,12 @@ byconity:
             hdfs:
               default: server_hdfs_disk
               disk: server_hdfs_disk
+        default:
+          volumes:
+            local:
+              default: server_local_0
+              disk: server_local_0
+
         # cnch_default_s3:
         #   volumes:
         #     bytes3:
