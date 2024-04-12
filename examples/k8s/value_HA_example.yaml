@@ -6,7 +6,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: byconity-cn-beijing.cr.volces.com/byconity/byconity
+  repository: byconity/byconity
   tag: 0.3.1.prerelease
   imagePullPolicy: IfNotPresent
 
