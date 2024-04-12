@@ -6,8 +6,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: byconity/byconity
-  tag: stable
+  repository: byconity-cn-beijing.cr.volces.com/byconity/byconity
+  tag: 0.3.1.prerelease
   imagePullPolicy: IfNotPresent
 
 byconity:
@@ -46,7 +46,7 @@ byconity:
         server_local_0:
           path: /var/byconity/data/
           type: local
-        # 
+        #
         # server_s3_disk_0:
         #   path: byconity0
         #   endpoint: http://xxx.xxx.xxx.xxx:9000
@@ -82,6 +82,8 @@ byconity:
     users:
       default:
         password: ""
+      readonly:
+        password: ""
       probe:
         password: probe
 
@@ -99,11 +101,11 @@ byconity:
     livenessProbe:
       exec:
         command: ["/opt/byconity/scripts/lifecycle/liveness"]
-      failureThreshold: 6
-      initialDelaySeconds: 5
-      periodSeconds: 10
+      failureThreshold: 6000
+      initialDelaySeconds: 5000
+      periodSeconds: 100000
       successThreshold: 1
-      timeoutSeconds: 20
+      timeoutSeconds: 200000
     readinessProbe:
       exec:
         command: ["/opt/byconity/scripts/lifecycle/readiness"]
@@ -135,7 +137,7 @@ byconity:
       disk_cache_strategies:
         simple:
           lru_max_size: 429496729600 # 400Gi
-      # timezone: Etc/UTC
+      timezone: Europe/Moscow
 
   tso:
     replicas: 3
@@ -248,7 +250,7 @@ byconity:
       disk_cache_strategies:
         simple:
           lru_max_size: 429496729600 # 400Gi
-      # timezone: Etc/UTC
+      timezone: Europe/Moscow
 
   virtualWarehouses:
     - <<: *defaultWorker
