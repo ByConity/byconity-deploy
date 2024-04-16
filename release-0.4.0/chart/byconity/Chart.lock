@@ -1,0 +1,9 @@
+dependencies:
+- name: hdfs
+  repository: ""
+  version: 1.0.0
+- name: fdb-operator
+  repository: ""
+  version: 0.2.0
+digest: sha256:bc5340d31aade1a2c5d5aae362e90c217e011f56fa952fb95300b3b5a681f202
+generated: "2023-09-20T17:30:02.964424+08:00"

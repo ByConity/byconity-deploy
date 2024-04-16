@@ -6,8 +6,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: byconity/byconity
-  tag: 0.4.0-testonly-9
+  repository: byconity-cn-beijing.cr.volces.com/byconity/byconity
+  tag: 0.3.2
   imagePullPolicy: IfNotPresent
 
 byconity:
@@ -204,7 +204,7 @@ byconity:
     configOverwrite: { }
 
   resourceManager:
-    replicas: 2
+    replicas: 1
     image: ""
     podAnnotations: { }
     resources: { }

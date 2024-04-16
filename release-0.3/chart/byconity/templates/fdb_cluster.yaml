@@ -1,0 +1,14 @@
+{{- if .Values.fdb.enabled }}
+apiVersion: apps.foundationdb.org/v1beta2
+kind: FoundationDBCluster
+metadata:
+  name: {{ include "byconity.fullname" . }}-fdb
+spec:
+  version: {{ .Values.fdb.version }}
+  routing:
+    headlessService: true
+    publicIPSource: service
+  {{- if .Values.fdb.clusterSpec }}
+  {{- toYaml .Values.fdb.clusterSpec | nindent 2 }}
+  {{- end }}
+{{- end }}
