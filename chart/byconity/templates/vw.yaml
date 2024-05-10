@@ -41,9 +41,17 @@ spec:
             {{- toYaml $.Values.byconity.additionalEnvs | nindent 12 }}
           {{- end }}
             - name: VIRTUAL_WAREHOUSE_ID
+            {{- if .virtual_warehouse_id }}
+              value: {{ .virtual_warehouse_id }}
+            {{- else }}
               value: {{ .name }}
+            {{- end }}
             - name: WORKER_GROUP_ID
+            {{- if .worker_group_id }}
+              value: {{ .worker_group_id }}
+            {{- else }}
               value: {{ .name }}
+            {{- end }}
             - name: WORKER_ID
               valueFrom:
                 fieldRef:
