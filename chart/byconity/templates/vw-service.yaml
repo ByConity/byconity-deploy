@@ -12,6 +12,7 @@ spec:
   type: ClusterIP
   selector:
     {{- include "byconity.selectorLabels" $ | nindent 4 }}
+    byconity-vw: {{ .name }}
     byconity-role: worker
   ports:
     - name: port0
