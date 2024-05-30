@@ -1,0 +1,984 @@
+2024-05-23 04:50:32 Using queries from './queries' directory
+2024-05-23 04:50:32 Using clickhouse-client as client program (expecting split build)
+2024-05-23 04:50:32 Namespace(queries='./queries', tmp='./queries', binary='clickhouse', client='clickhouse-client --host=192.168.91.7 --port=9000', extract_from_config='clickhouse extract-from-config', configclient=None, configserver='/etc/clickhouse-server/config.xml', output=None, timeout=600, global_time_limit=None, test=[], disabled=False, stop=True, order='asc', testname=None, hung_check=True, force_color=False, database=None, no_drop_if_fail=False, hide_db_name=False, parallel='1/1', jobs=4, test_runs=1, unified=3, server_check_retries=30, skip_list_path='./queries/skip_list.json', use_skip_list=True, db_engine=None, replicated_database=False, no_stateless=False, no_stateful=False, skip=None, sequential=set(), no_long=True, client_option=['enable_optimizer_fallback=0'], print_time=True, zookeeper=None, shard=None, run=['clickhouse_sql'], locate_asan_error_to_case=False, s3=False, single_server=False)
+2024-05-23 04:50:32 Connecting to ClickHouse server... OK
+2024-05-23 04:50:34 Use build flag: release-build, skips tests: {'01801_s3_cluster', '01829_test_aggregation_bitmapMaxLevel', '01269_toStartOfSecond', '01548_parallel_parsing_max_memory', '01475_read_subcolumns', '08000_scalar_query_distributed_stages', '10044_zookeeper_test_uniquekey_unique_merge_tree_optimize', '01594_too_low_memory_limits', '10062_any_left_nestloop_join', '01193_metadata_loading', '08000_test_in_distributed_stages', '00142_parse_timestamp_as_datetime', '01829_test_aggregation_bitmapExpressionComputation', '02021_test_perfect_shard_in', '10062_any_left_noteq_nestloop_join', '08000_test_multi_join_distributed_stages', '01829_test_aggregation_bitmapExpressionComputation_two_shards', '01086_odbc_roundtrip', '00829_bitmap64_function', '01598_memory_limit_zeros', '10060_zookeeper_test_uniquekey_unique_merge', '01323_add_scalars_in_time', '00900_long_parquet_load', '00743_aggregation_finder_funnel_group', '00634_performance_introspection_and_logging', '00145_aggregate_functions_statistics', '00515_enhanced_time_zones', '01103_check_cpu_instructions_at_startup', '10065_zookeeper_test_uniquekey_vertical_merge', '08000_test_join_distributed_stages', '01829_test_aggregation_bitmapColumnDiff', '01455_opentelemetry_distributed', '10061_zookeeper_test_uniquekey_alter_engine_table_level', '10033_zookeeper_test_uniquekey_partition_level_unique', '02021_test_perfect_shard', '02032_function_version_compare'}
+2024-05-23 04:50:34 Use build flag: polymorphic-parts, skips tests: {'01158_zookeeper_log', '01482_move_to_prewhere_and_cast', '01508_partition_pruning_long'}
+2024-05-23 04:50:34 Use build flag: multi-servers, skips tests: {'40023_mv_with_topn_filtering', '45004_create_stats_sample_acc', '10102_uniquekey_insert_values', '10200_table_snapshots', '01004_optimize_final', '65001_ddl_case_insensitive_upper', '10113_uniquekey_rename_with_staged_parts', '10023_rename', '45004_create_stats_sample', '10120_optimize_query', '01765_hashed_dictionary_simple_key_ck233', '45007_ip_stats', '50011_parts_info_for_unique_table', '00388_enum_with_totals', '01918_test_nullable_skip_index', 'control_all_bg_jobs', '01676_range_hashed_dictionary_ck233', '50009_custom_cnch_merge_tree', '50010_parts_info', '10112_uniquekey_merge_vertical', '45007_date_stats', '01682_cache_dictionary_complex_key_ck233', '45004_stats_star', '65001_ddl_case_insensitive', '45013_cache_policy', '10054_mv_refresh_where_sync', '45005_memory_stats', '45004_create_stats_sample_acc_ndv', '10202_part_gc', '10054_mv_refresh1', '45015_explain_stats_lowcard', '01007_ttl_create_nullable_date_in_mysql', '01001_alter_delete'}
+2024-05-23 04:50:34 Found file with skip-list ./queries/skip_list.json, 72 test will be skipped
+2024-05-23 04:50:34 Won't run stateful tests because test data wasn't loaded.
+2024-05-23 04:50:34 Found 64 parallel tests and 1 sequential tests
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 Running about 16 clickhouse_sql tests (ForkPoolWorker-2).
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 00050_any_left_join:                                                    [ OK ] 0.30 sec.
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 Running about 16 clickhouse_sql tests (ForkPoolWorker-3).
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 00051_any_inner_join:                                                   [ OK ] 0.30 sec.
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 Running about 16 clickhouse_sql tests (ForkPoolWorker-1).
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 00049_any_left_join:                                                    [ OK ] 0.30 sec.
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 Running about 16 clickhouse_sql tests (ForkPoolWorker-4).
+2024-05-23 04:50:35 
+2024-05-23 04:50:35 00053_all_inner_join:                                                   [ OK ] 0.29 sec.
+2024-05-23 04:50:35 00099_join_many_blocks_segfault:                                        [ OK ] 0.28 sec.
+2024-05-23 04:50:35 00122_join_with_subquery_with_subquery:                                 [ OK ] 0.28 sec.
+2024-05-23 04:50:35 00098_l_union_all:                                                      [ OK ] 0.29 sec.
+2024-05-23 04:50:35 00057_join_aliases:                                                     [ OK ] 0.30 sec.
+2024-05-23 04:50:35 00157_aliases_and_lambda_formal_parameters:                             [ OK ] 0.24 sec.
+2024-05-23 04:50:35 00194_identity:                                                         [ OK ] 0.24 sec.
+2024-05-23 04:50:35 00135_duplicate_group_by_keys_segfault:                                 [ OK ] 0.27 sec.
+2024-05-23 04:50:35 00225_join_duplicate_columns:                                           [ OK ] 0.27 sec.
+2024-05-23 04:50:35 00239_type_conversion_in_in:                                            [ OK ] 0.27 sec.
+2024-05-23 04:50:35 00219_full_right_join_column_order:                                     [ OK ] 0.30 sec.
+2024-05-23 04:50:36 00268_aliases_without_as_keyword:                                       [ OK ] 0.28 sec.
+2024-05-23 04:50:36 00370_duplicate_columns_in_subqueries:                                  [ OK ] 0.33 sec.
+2024-05-23 04:50:36 00412_logical_expressions_optimizer:                                    [ OK ] 0.33 sec.
+2024-05-23 04:50:37 00444_join_use_nulls:                                                   [ OK ] 0.68 sec.
+2024-05-23 04:50:37 00445_join_nullable_keys:                                               [ OK ] 0.40 sec.
+2024-05-23 04:50:38 00482_subqueries_and_aliases:                                           [ OK ] 0.45 sec.
+2024-05-23 04:50:38 00490_with_select:                                                      [ OK ] 0.27 sec.
+2024-05-23 04:50:38 00503_cast_const_nullable:                                              [ OK ] 0.24 sec.
+2024-05-23 04:50:39 00554_nested_and_table_engines:                                         [ OK ] 0.99 sec.
+2024-05-23 04:50:39 00556_remove_columns_from_subquery:                                     [ OK ] 0.26 sec.
+2024-05-23 04:50:40 00577_full_join_segfault:                                               [ OK ] 0.29 sec.
+2024-05-23 04:50:40 00596_limit_on_expanded_ast:                                            [ OK ] 0.42 sec.
+2024-05-23 04:50:40 00644_different_expressions_with_same_alias:                            [ OK ] 0.26 sec.
+2024-05-23 04:50:41 00650_array_enumerate_uniq_with_tuples:                                 [ OK ] 0.55 sec.
+2024-05-23 04:50:41 00679_replace_asterisk:                                                 [ OK ] 0.27 sec.
+2024-05-23 04:50:41 00680_duplicate_columns_inside_union_all:                               [ OK ] 0.27 sec.
+2024-05-23 04:50:42 00702_join_with_using:                                                  [ OK ] 0.70 sec.
+2024-05-23 04:50:43 00702_join_with_using_dups:                                             [ OK ] 0.64 sec.
+2024-05-23 04:50:44 00702_join_on_dups:                                                     [ OK ] 1.47 sec.
+2024-05-23 04:50:48 00722_inner_join:                                                       [ OK ] 3.84 sec.
+2024-05-23 04:50:49 00725_join_on_bug_1:                                                    [ OK ] 0.47 sec.
+2024-05-23 04:50:51 00735_conditional:                                                      [ OK ] 2.74 sec.
+2024-05-23 04:50:55 00738_nested_merge_multidimensional_array:                              [ OK ] 3.40 sec.
+2024-05-23 04:50:55 00753_with_with_single_alias:                                           [ OK ] 0.27 sec.
+2024-05-23 04:50:55 00799_function_dry_run:                                                 [ OK ] 0.36 sec.
+2024-05-23 04:50:56 00817_with_simple:                                                      [ OK ] 0.26 sec.
+2024-05-23 04:50:57 00818_alias_bug_4110:                                                   [ OK ] 1.04 sec.
+2024-05-23 04:50:57 00818_inner_join_bug_3567:                                              [ OK ] 0.49 sec.
+2024-05-23 04:50:57 00819_ast_refactoring_bugs:                                             [ OK ] 0.34 sec.
+2024-05-23 04:50:58 00819_full_join_wrong_columns_in_block:                                 [ OK ] 0.35 sec.
+2024-05-23 04:50:59 00820_multiple_joins_subquery_requires_alias:                           [ OK ] 1.01 sec.
+2024-05-23 04:50:59 00845_join_on_aliases:                                                  [ OK ] 0.53 sec.
+2024-05-23 04:51:00 00853_join_with_nulls_crash:                                            [ OK ] 0.52 sec.
+2024-05-23 04:51:00 00860_unknown_identifier_bug:                                           [ OK ] 0.37 sec.
+2024-05-23 04:51:01 00875_join_right_nulls:                                                 [ OK ] 0.72 sec.
+2024-05-23 04:51:01 00881_unknown_identifier_in_in:                                         [ OK ] 0.25 sec.
+2024-05-23 04:51:02 00915_tuple_orantius:                                                   [ OK ] 0.24 sec.
+2024-05-23 04:51:02 00927_asof_joins:                                                       [ OK ] 0.48 sec.
+2024-05-23 04:51:03 00927_asof_join_correct_bt:                                             [ OK ] 0.62 sec.
+2024-05-23 04:51:03 00927_asof_join_noninclusive:                                           [ OK ] 0.57 sec.
+2024-05-23 04:51:04 00969_columns_clause:                                                   [ OK ] 0.63 sec.
+2024-05-23 04:51:04 00147_alter_nested_default:                                             [ fail_retry:1 ] 0.34 sec. - return code 47
+2024-05-23 04:51:04 [byconity-server-0] 2024.05.23 07:50:35.535941 [ 15023 ] {0b4ce1c4-757a-4202-8a74-94e6a1d618cf} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: n SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:47436) (comment: 00147_alter_nested_default.sql) (in query: SELECT * FROM alter_00147 ARRAY JOIN n order by n.x;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:04 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Received exception from server (version 21.8.7):
+2024-05-23 04:51:04 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: n SQLSTATE: 42703. 
+2024-05-23 04:51:04 , result:
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 2015-01-01	['Hello','World']
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Database: test_8ym0o1
+2024-05-23 04:51:04 00147_alter_nested_default:                                             [ fail_retry:2 ] 0.32 sec. - return code 47
+2024-05-23 04:51:04 [byconity-server-0] 2024.05.23 07:50:35.864695 [ 15023 ] {4376f67d-4df3-49db-9c3d-e3bdae1f3316} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: n SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:47570) (comment: 00147_alter_nested_default.sql) (in query: SELECT * FROM alter_00147 ARRAY JOIN n order by n.x;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:04 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Received exception from server (version 21.8.7):
+2024-05-23 04:51:04 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: n SQLSTATE: 42703. 
+2024-05-23 04:51:04 , result:
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 2015-01-01	['Hello','World']
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Database: test_m8hhsj
+2024-05-23 04:51:04 00147_alter_nested_default:                                             [ fail_retry:3 ] 0.33 sec. - return code 47
+2024-05-23 04:51:04 [byconity-server-0] 2024.05.23 07:50:40.195651 [ 15023 ] {354ed2b9-96d9-4f1b-b436-d30a06b285bd} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: n SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:48010) (comment: 00147_alter_nested_default.sql) (in query: SELECT * FROM alter_00147 ARRAY JOIN n order by n.x;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:04 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Received exception from server (version 21.8.7):
+2024-05-23 04:51:04 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: n SQLSTATE: 42703. 
+2024-05-23 04:51:04 , result:
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 2015-01-01	['Hello','World']
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Database: test_m6jhes
+2024-05-23 04:51:04 00147_alter_nested_default:                                             [ FAIL ] 0.32 sec. - return code 47
+2024-05-23 04:51:04 [byconity-server-0] 2024.05.23 07:50:48.531636 [ 15023 ] {2f0ef620-c983-4b4d-a2a8-abc5c4d22d71} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: n SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:52522) (comment: 00147_alter_nested_default.sql) (in query: SELECT * FROM alter_00147 ARRAY JOIN n order by n.x;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:04 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:04 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Received exception from server (version 21.8.7):
+2024-05-23 04:51:04 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: n SQLSTATE: 42703. 
+2024-05-23 04:51:04 , result:
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 2015-01-01	['Hello','World']
+2024-05-23 04:51:04 
+2024-05-23 04:51:04 Database: test_b8epyr
+2024-05-23 04:51:04 00980_full_join_crash_fancyqlx:                                         [ OK ] 0.46 sec.
+2024-05-23 04:51:05 01010_test_join_view:                                                   [ OK ] 0.42 sec.
+2024-05-23 04:51:05 40016_join_using_implicit_conversion_clickhouse:                        [ OK ] 0.30 sec.
+2024-05-23 04:51:05 01012_test_column_prune:                                                [ OK ] 0.64 sec.
+2024-05-23 04:51:05 41000_optimize_groupby:                                                 [ OK ] 0.33 sec.
+2024-05-23 04:51:05 
+2024-05-23 04:51:05 Having 1 errors! 1 tests passed. 0 tests skipped. 31.00 s elapsed (ForkPoolWorker-4).
+2024-05-23 04:51:11 00261_storage_aliases_and_array_join:                                   [ fail_retry:1 ] 1.97 sec. - return code 47
+2024-05-23 04:51:11 [byconity-server-0] 2024.05.23 07:50:37.698358 [ 17856 ] {1801f153-508c-4b38-ba5c-53828e2eaee6} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:47632) (comment: 00261_storage_aliases_and_array_join.sql) (in query: select array, struct.d1, struct.a1, struct.a2, struct.a3, struct.a4, struct.a5, struct.a6 from test.aliases_test array join struct;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:11 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 Received exception from server (version 21.8.7):
+2024-05-23 04:51:11 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703. 
+2024-05-23 04:51:11 , result:
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 -- Ensure ALIAS columns are not selected by asterisk
+2024-05-23 04:51:11 1970-01-01	0	['zero','one','two']	['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 zero	zero
+2024-05-23 04:51:11 one	one
+2024-05-23 04:51:11 two	two
+2024-05-23 04:51:11 zero	['zero','one','two']
+2024-05-23 04:51:11 one	['zero','one','two']
+2024-05-23 04:51:11 two	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	zero
+2024-05-23 04:51:11 ['zero','one','two']	one
+2024-05-23 04:51:11 ['zero','one','two']	two
+2024-05-23 04:51:11 -- array join, but request the original columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- array join, do not use the result
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	0	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	1	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	2	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	0	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	1	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	2	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time and aliasing result with original name
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays and array join result, aliased as `joined`
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 Database: test_1aeq7s
+2024-05-23 04:51:11 00261_storage_aliases_and_array_join:                                   [ fail_retry:2 ] 2.00 sec. - return code 47
+2024-05-23 04:51:11 [byconity-server-0] 2024.05.23 07:50:39.704952 [ 17856 ] {21d36d23-6e46-4b05-ab02-f21e915bcb53} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:47824) (comment: 00261_storage_aliases_and_array_join.sql) (in query: select array, struct.d1, struct.a1, struct.a2, struct.a3, struct.a4, struct.a5, struct.a6 from test.aliases_test array join struct;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:11 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 Received exception from server (version 21.8.7):
+2024-05-23 04:51:11 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703. 
+2024-05-23 04:51:11 , result:
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 -- Ensure ALIAS columns are not selected by asterisk
+2024-05-23 04:51:11 1970-01-01	0	['zero','one','two']	['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 zero	zero
+2024-05-23 04:51:11 one	one
+2024-05-23 04:51:11 two	two
+2024-05-23 04:51:11 zero	['zero','one','two']
+2024-05-23 04:51:11 one	['zero','one','two']
+2024-05-23 04:51:11 two	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	zero
+2024-05-23 04:51:11 ['zero','one','two']	one
+2024-05-23 04:51:11 ['zero','one','two']	two
+2024-05-23 04:51:11 -- array join, but request the original columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- array join, do not use the result
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	0	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	1	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	2	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	0	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	1	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	2	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time and aliasing result with original name
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays and array join result, aliased as `joined`
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 Database: test_nck9ec
+2024-05-23 04:51:11 00261_storage_aliases_and_array_join:                                   [ fail_retry:3 ] 2.05 sec. - return code 47
+2024-05-23 04:51:11 [byconity-server-0] 2024.05.23 07:50:45.756301 [ 15023 ] {57f57938-b47d-43fc-815b-c0c49ece6194} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:52458) (comment: 00261_storage_aliases_and_array_join.sql) (in query: select array, struct.d1, struct.a1, struct.a2, struct.a3, struct.a4, struct.a5, struct.a6 from test.aliases_test array join struct;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:11 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 Received exception from server (version 21.8.7):
+2024-05-23 04:51:11 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703. 
+2024-05-23 04:51:11 , result:
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 -- Ensure ALIAS columns are not selected by asterisk
+2024-05-23 04:51:11 1970-01-01	0	['zero','one','two']	['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 zero	zero
+2024-05-23 04:51:11 one	one
+2024-05-23 04:51:11 two	two
+2024-05-23 04:51:11 zero	['zero','one','two']
+2024-05-23 04:51:11 one	['zero','one','two']
+2024-05-23 04:51:11 two	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	zero
+2024-05-23 04:51:11 ['zero','one','two']	one
+2024-05-23 04:51:11 ['zero','one','two']	two
+2024-05-23 04:51:11 -- array join, but request the original columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- array join, do not use the result
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	0	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	1	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	2	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	0	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	1	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	2	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time and aliasing result with original name
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays and array join result, aliased as `joined`
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 Database: test_o34t6k
+2024-05-23 04:51:11 00261_storage_aliases_and_array_join:                                   [ FAIL ] 1.33 sec. - return code 47
+2024-05-23 04:51:11 [byconity-server-0] 2024.05.23 07:50:55.095819 [ 15023 ] {901c3cac-0ee4-48dc-9441-f4fa06194560} <Error> executeQuery: Code: 47, e.displayText() = DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703 (version 21.8.7.1) (from [::ffff:192.168.89.182]:43958) (comment: 00261_storage_aliases_and_array_join.sql) (in query: select array, struct.d1, struct.a1, struct.a2, struct.a3, struct.a4, struct.a5, struct.a6 from test.aliases_test array join struct;), Stack trace (when copying this message, always include the lines below):
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 0. Poco::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int) @ 0x27227652 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 1. DB::Exception::Exception(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, int, bool) @ 0x10780640 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 2. DB::ExprAnalyzerVisitor::visitASTIdentifier(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x22584af3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 3. DB::ColumnWithTypeAndName DB::ASTVisitorUtil::accept<DB::ColumnWithTypeAndName, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::ColumnWithTypeAndName, DB::Void const>&, DB::Void const&) @ 0x2258e1e3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 4. DB::ExprAnalyzerVisitor::process(std::__1::shared_ptr<DB::IAST>&) @ 0x22583e96 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 5. DB::ExprAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&, DB::ExprAnalyzerOptions) @ 0x22583b83 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 6. DB::QueryAnalyzerVisitor::analyzeArrayJoin(DB::ASTArrayJoin&, DB::ASTSelectQuery&, DB::Scope const*) @ 0x22563f77 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 7. DB::QueryAnalyzerVisitor::analyzeFrom(DB::ASTTablesInSelectQuery&, DB::ASTSelectQuery&, std::__1::unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::shared_ptr<DB::IAST>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const, std::__1::shared_ptr<DB::IAST> > > > const&) @ 0x2255c309 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 8. DB::QueryAnalyzerVisitor::visitASTSelectQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255bc13 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 9. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bbb in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 10. DB::QueryAnalyzerVisitor::analyzeSetOperation(std::__1::shared_ptr<DB::IAST>&, std::__1::vector<std::__1::shared_ptr<DB::IAST>, std::__1::allocator<std::__1::shared_ptr<DB::IAST> > >&) @ 0x2255a3d2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 11. DB::QueryAnalyzerVisitor::visitASTSelectWithUnionQuery(std::__1::shared_ptr<DB::IAST>&, DB::Void const&) @ 0x2255b382 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 12. DB::Void DB::ASTVisitorUtil::accept<DB::Void, DB::Void const>(std::__1::shared_ptr<DB::IAST>&, DB::ASTVisitor<DB::Void, DB::Void const>&, DB::Void const&) @ 0x22574bdf in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 13. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, DB::Scope const*, std::__1::shared_ptr<DB::Context const>, DB::Analysis&) @ 0x225588ff in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 14. DB::QueryAnalyzer::analyze(std::__1::shared_ptr<DB::IAST>&, std::__1::shared_ptr<DB::Context const>) @ 0x225580d0 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 15. DB::InterpreterSelectQueryUseOptimizer::buildQueryPlan(std::__1::unique_ptr<DB::QueryPlan, std::__1::default_delete<DB::QueryPlan> >&, std::__1::shared_ptr<DB::Analysis>&, bool) @ 0x213105e2 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 16. DB::InterpreterSelectQueryUseOptimizer::getQueryPlan(bool) @ 0x2130ebc5 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 17. DB::InterpreterSelectQueryUseOptimizer::getPlanSegment() @ 0x21311a1b in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 18. DB::InterpreterSelectQueryUseOptimizer::execute() @ 0x21317151 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 19. DB::executeQueryImpl(char const*, char const*, std::__1::shared_ptr<DB::IAST>, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool, DB::ReadBuffer*) @ 0x21581b03 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 20. DB::executeQuery(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::shared_ptr<DB::Context>, bool, DB::QueryProcessingStage::Enum, bool) @ 0x2157d855 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 21. DB::TCPHandler::runImpl() @ 0x222a6ee3 in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 22. DB::TCPHandler::run() @ 0x222b5b3c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 23. Poco::Net::TCPServerConnection::start() @ 0x2719cd8c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 24. Poco::Net::TCPServerDispatcher::run() @ 0x2719d26c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 25. Poco::PooledThread::run() @ 0x2728437a in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 26. Poco::ThreadImpl::runnableEntry(void*) @ 0x27281f2c in /opt/byconity/bin/clickhouse
+2024-05-23 04:51:11 27. start_thread @ 0x7ea7 in /lib/x86_64-linux-gnu/libpthread-2.31.so
+2024-05-23 04:51:11 28. __clone @ 0xfca2f in /lib/x86_64-linux-gnu/libc-2.31.so
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 Received exception from server (version 21.8.7):
+2024-05-23 04:51:11 Code: 47. DB::Exception: Received from 192.168.91.7:9000. DB::Exception: Can not resolve identifier: struct SQLSTATE: 42703. 
+2024-05-23 04:51:11 , result:
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 -- Ensure ALIAS columns are not selected by asterisk
+2024-05-23 04:51:11 1970-01-01	0	['zero','one','two']	['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 zero	zero
+2024-05-23 04:51:11 one	one
+2024-05-23 04:51:11 two	two
+2024-05-23 04:51:11 zero	['zero','one','two']
+2024-05-23 04:51:11 one	['zero','one','two']
+2024-05-23 04:51:11 two	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	zero
+2024-05-23 04:51:11 ['zero','one','two']	one
+2024-05-23 04:51:11 ['zero','one','two']	two
+2024-05-23 04:51:11 -- array join, but request the original columns
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']
+2024-05-23 04:51:11 -- array join, do not use the result
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 ['zero','one','two']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	one	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	two	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	0	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	1	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	2	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	0	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	1	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	2	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays, array joining one at a time and aliasing result with original name
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS arrays and array join result, aliased as `joined`
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	zero
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	one
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	two
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	0
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	1
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']	2
+2024-05-23 04:51:11 -- select DEFAULT and ALIAS nested columns, array joining one at a time
+2024-05-23 04:51:11 ['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	one	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	two	['zero','one','two']	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 ['zero','one','two']	['zero','one','two']	['zero','one','two']	zero	['zero','one','two']	['0','1','2']	['0','1','2']	['0','1','2']
+2024-05-23 04:51:11 Database: test_8jqisd
+2024-05-23 04:51:11 
+2024-05-23 04:51:11 Having 1 errors! 0 tests passed. 0 tests skipped. 36.50 s elapsed (ForkPoolWorker-2).
+2024-05-23 04:51:34 60011_compatibility_with_community_client:                              [ fail_retry:1 ] 0.36 sec. - return code 127
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 5: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 6: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 7: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 8: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 9: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 11: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 12: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 , result:
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 Database: test_kh7seu
+2024-05-23 04:51:34 60011_compatibility_with_community_client:                              [ fail_retry:2 ] 0.35 sec. - return code 127
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 5: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 6: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 7: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 8: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 9: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 11: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 12: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 , result:
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 Database: test_mnkh5y
+2024-05-23 04:51:34 60011_compatibility_with_community_client:                              [ fail_retry:3 ] 0.35 sec. - return code 127
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 5: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 6: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 7: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 8: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 9: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 11: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 12: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 , result:
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 Database: test_i2xxtt
+2024-05-23 04:51:34 60011_compatibility_with_community_client:                              [ FAIL ] 0.35 sec. - return code 127
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 5: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 6: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 7: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 8: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 9: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 11: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 /root/app/queries/7_clickhouse_sql/60011_compatibility_with_community_client.sh: line 12: /home/clickhouse: No such file or directory
+2024-05-23 04:51:34 , result:
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 Database: test_d7nq53
+2024-05-23 04:51:34 
+2024-05-23 04:51:34 Having 1 errors! 0 tests passed. 0 tests skipped. 60.18 s elapsed (ForkPoolWorker-3).
+2024-05-23 04:56:37 00392_enum_nested_alter:                                                [ OK ] 361.07 sec.
+2024-05-23 04:56:37 
+2024-05-23 04:56:37 1 tests passed. 0 tests skipped. 362.49 s elapsed (ForkPoolWorker-1).
+2024-05-23 04:56:37 
+2024-05-23 04:56:37 Running 1 clickhouse_sql tests (MainProcess).
+2024-05-23 04:56:37 
+2024-05-23 04:56:47 00625_arrays_in_nested:                                                 [ OK ] 9.95 sec.
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 1 tests passed. 0 tests skipped. 9.96 s elapsed (MainProcess).
+2024-05-23 04:56:47 Found 5 parallel tests and 0 sequential tests
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 1446, in <module>
+2024-05-23 04:56:47     main(args)
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 1148, in main
+2024-05-23 04:56:47     total_tests_run += do_run_tests(
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 956, in do_run_tests
+2024-05-23 04:56:47     queue.put(suit)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/queues.py", line 88, in put
+2024-05-23 04:56:47     raise ValueError(f"Queue {self!r} is closed")
+2024-05-23 04:56:47 ValueError: Queue <multiprocessing.queues.Queue object at 0x7f5a98f22700> is closed
+2024-05-23 04:56:47 Process ForkPoolWorker-5:
+2024-05-23 04:56:47 Process ForkPoolWorker-7:
+2024-05-23 04:56:47 Process ForkPoolWorker-6:
+2024-05-23 04:56:47 Process ForkPoolWorker-8:
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+2024-05-23 04:56:47     self.run()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+2024-05-23 04:56:47     self._target(*self._args, **self._kwargs)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 131, in worker
+2024-05-23 04:56:47     put((job, i, result))
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/queues.py", line 378, in put
+2024-05-23 04:56:47     self._writer.send_bytes(obj)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/connection.py", line 190, in send_bytes
+2024-05-23 04:56:47     m = memoryview(buf)
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 55, in signal_handler
+2024-05-23 04:56:47     raise Terminated(f'Terminated with {sig} signal')
+2024-05-23 04:56:47 Terminated: Terminated with 15 signal
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Running about 1 unstable_clickhouse_sql tests (ForkPoolWorker-6).
+2024-05-23 04:56:47 
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+2024-05-23 04:56:47     self.run()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+2024-05-23 04:56:47     self._target(*self._args, **self._kwargs)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 114, in worker
+2024-05-23 04:56:47     task = get()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/queues.py", line 365, in get
+2024-05-23 04:56:47     with self._rlock:
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/synchronize.py", line 95, in __enter__
+2024-05-23 04:56:47     return self._semlock.__enter__()
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 55, in signal_handler
+2024-05-23 04:56:47     raise Terminated(f'Terminated with {sig} signal')
+2024-05-23 04:56:47 Terminated: Terminated with 15 signal
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Running about 1 unstable_clickhouse_sql tests (ForkPoolWorker-5).
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+2024-05-23 04:56:47     result = (True, func(*args, **kwds))
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 48, in mapstar
+2024-05-23 04:56:47     return list(map(*args))
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 659, in run_tests_array
+2024-05-23 04:56:47     case = queue.get()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/queues.py", line 103, in get
+2024-05-23 04:56:47     res = self._recv_bytes()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/connection.py", line 217, in recv_bytes
+2024-05-23 04:56:47     self._check_closed()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/connection.py", line 141, in _check_closed
+2024-05-23 04:56:47     raise OSError("handle is closed")
+2024-05-23 04:56:47 OSError: handle is closed
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 During handling of the above exception, another exception occurred:
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+2024-05-23 04:56:47     self.run()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+2024-05-23 04:56:47     self._target(*self._args, **self._kwargs)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 128, in worker
+2024-05-23 04:56:47     e = ExceptionWithTraceback(e, e.__traceback__)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 65, in __init__
+2024-05-23 04:56:47     tb = traceback.format_exception(type(exc), exc, tb)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 120, in format_exception
+2024-05-23 04:56:47     return list(TracebackException(
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 625, in format
+2024-05-23 04:56:47     yield from self.stack.format()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 423, in format
+2024-05-23 04:56:47     row.append('  File "{}", line {}, in {}\n'.format(
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 55, in signal_handler
+2024-05-23 04:56:47     raise Terminated(f'Terminated with {sig} signal')
+2024-05-23 04:56:47 Terminated: Terminated with 15 signal
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+2024-05-23 04:56:47     result = (True, func(*args, **kwds))
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 48, in mapstar
+2024-05-23 04:56:47     return list(map(*args))
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 659, in run_tests_array
+2024-05-23 04:56:47     case = queue.get()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/queues.py", line 103, in get
+2024-05-23 04:56:47     res = self._recv_bytes()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/connection.py", line 217, in recv_bytes
+2024-05-23 04:56:47     self._check_closed()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/connection.py", line 141, in _check_closed
+2024-05-23 04:56:47     raise OSError("handle is closed")
+2024-05-23 04:56:47 OSError: handle is closed
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 During handling of the above exception, another exception occurred:
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Traceback (most recent call last):
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Running about 1 unstable_clickhouse_sql tests (ForkPoolWorker-7).
+2024-05-23 04:56:47 
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+2024-05-23 04:56:47     self.run()
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+2024-05-23 04:56:47     self._target(*self._args, **self._kwargs)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 128, in worker
+2024-05-23 04:56:47     e = ExceptionWithTraceback(e, e.__traceback__)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/multiprocessing/pool.py", line 65, in __init__
+2024-05-23 04:56:47     tb = traceback.format_exception(type(exc), exc, tb)
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 120, in format_exception
+2024-05-23 04:56:47     return list(TracebackException(
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 508, in __init__
+2024-05-23 04:56:47     self.stack = StackSummary.extract(
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 366, in extract
+2024-05-23 04:56:47     f.line
+2024-05-23 04:56:47   File "/usr/lib/python3.9/traceback.py", line 288, in line
+2024-05-23 04:56:47     self._line = linecache.getline(self.filename, self.lineno).strip()
+2024-05-23 04:56:47   File "/root/app/./clickhouse-test", line 55, in signal_handler
+2024-05-23 04:56:47     raise Terminated(f'Terminated with {sig} signal')
+2024-05-23 04:56:47 Terminated: Terminated with 15 signal
+2024-05-23 04:56:47 
+2024-05-23 04:56:47 Running about 1 unstable_clickhouse_sql tests (ForkPoolWorker-8).
+2024-05-23 04:56:47 

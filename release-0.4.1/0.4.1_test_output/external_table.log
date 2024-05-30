@@ -1,0 +1,32 @@
+2024-05-23 03:34:02 Using queries from './queries' directory
+2024-05-23 03:34:02 Using clickhouse-client as client program (expecting split build)
+2024-05-23 03:34:02 Namespace(queries='./queries', tmp='./queries', binary='clickhouse', client='clickhouse-client --host=192.168.91.7 --port=9000', extract_from_config='clickhouse extract-from-config', configclient=None, configserver='/etc/clickhouse-server/config.xml', output=None, timeout=600, global_time_limit=None, test=[], disabled=False, stop=True, order='asc', testname=None, hung_check=True, force_color=False, database=None, no_drop_if_fail=False, hide_db_name=False, parallel='1/1', jobs=4, test_runs=1, unified=3, server_check_retries=30, skip_list_path='./queries/skip_list.json', use_skip_list=True, db_engine=None, replicated_database=False, no_stateless=False, no_stateful=False, skip=None, sequential=set(), no_long=True, client_option=['enable_optimizer_fallback=0'], print_time=True, zookeeper=None, shard=None, run=['cnch_external_table'], locate_asan_error_to_case=False, s3=False, single_server=False)
+2024-05-23 03:34:02 Connecting to ClickHouse server... OK
+2024-05-23 03:34:04 Use build flag: release-build, skips tests: {'01829_test_aggregation_bitmapExpressionComputation_two_shards', '00900_long_parquet_load', '01829_test_aggregation_bitmapExpressionComputation', '01548_parallel_parsing_max_memory', '10061_zookeeper_test_uniquekey_alter_engine_table_level', '01801_s3_cluster', '01086_odbc_roundtrip', '01103_check_cpu_instructions_at_startup', '02021_test_perfect_shard', '10044_zookeeper_test_uniquekey_unique_merge_tree_optimize', '10062_any_left_nestloop_join', '01269_toStartOfSecond', '02021_test_perfect_shard_in', '02032_function_version_compare', '00145_aggregate_functions_statistics', '00743_aggregation_finder_funnel_group', '08000_scalar_query_distributed_stages', '10065_zookeeper_test_uniquekey_vertical_merge', '08000_test_multi_join_distributed_stages', '00829_bitmap64_function', '10033_zookeeper_test_uniquekey_partition_level_unique', '01455_opentelemetry_distributed', '01598_memory_limit_zeros', '01829_test_aggregation_bitmapColumnDiff', '01829_test_aggregation_bitmapMaxLevel', '08000_test_join_distributed_stages', '10060_zookeeper_test_uniquekey_unique_merge', '01323_add_scalars_in_time', '01193_metadata_loading', '00142_parse_timestamp_as_datetime', '08000_test_in_distributed_stages', '10062_any_left_noteq_nestloop_join', '01475_read_subcolumns', '01594_too_low_memory_limits', '00515_enhanced_time_zones', '00634_performance_introspection_and_logging'}
+2024-05-23 03:34:04 Use build flag: polymorphic-parts, skips tests: {'01482_move_to_prewhere_and_cast', '01508_partition_pruning_long', '01158_zookeeper_log'}
+2024-05-23 03:34:04 Use build flag: multi-servers, skips tests: {'10202_part_gc', '50011_parts_info_for_unique_table', '01682_cache_dictionary_complex_key_ck233', '65001_ddl_case_insensitive_upper', '10054_mv_refresh1', '10113_uniquekey_rename_with_staged_parts', '45015_explain_stats_lowcard', '01918_test_nullable_skip_index', '01001_alter_delete', '45007_ip_stats', '45005_memory_stats', '50010_parts_info', '50009_custom_cnch_merge_tree', '10112_uniquekey_merge_vertical', '10200_table_snapshots', '01765_hashed_dictionary_simple_key_ck233', '10120_optimize_query', 'control_all_bg_jobs', '10054_mv_refresh_where_sync', '45013_cache_policy', '45007_date_stats', '65001_ddl_case_insensitive', '40023_mv_with_topn_filtering', '45004_create_stats_sample_acc_ndv', '00388_enum_with_totals', '45004_stats_star', '01007_ttl_create_nullable_date_in_mysql', '10102_uniquekey_insert_values', '45004_create_stats_sample_acc', '01004_optimize_final', '45004_create_stats_sample', '10023_rename', '01676_range_hashed_dictionary_ck233'}
+2024-05-23 03:34:04 Found file with skip-list ./queries/skip_list.json, 72 test will be skipped
+2024-05-23 03:34:04 Won't run stateful tests because test data wasn't loaded.
+2024-05-23 03:34:04 Found 1 parallel tests and 6 sequential tests
+2024-05-23 03:34:05 
+2024-05-23 03:34:05 Running about 1 cnch_external_table tests (ForkPoolWorker-1).
+2024-05-23 03:34:05 
+2024-05-23 03:34:05 65000_mysql_bi_ddl:                                                     [ OK ] 0.37 sec.
+2024-05-23 03:34:05 
+2024-05-23 03:34:05 1 tests passed. 0 tests skipped. 0.38 s elapsed (ForkPoolWorker-1).
+2024-05-23 03:34:05 
+2024-05-23 03:34:05 Running 6 cnch_external_table tests (MainProcess).
+2024-05-23 03:34:05 
+2024-05-23 03:34:06 11000_flat_dictionary:                                                  [ OK ] 1.52 sec.
+2024-05-23 03:34:07 11001_hash_dictionary:                                                  [ OK ] 0.71 sec.
+2024-05-23 03:34:07 11002_range_hash_dictionary:                                            [ OK ] 0.44 sec.
+2024-05-23 03:34:08 11003_complex_hash_dictionary:                                          [ OK ] 0.77 sec.
+2024-05-23 03:34:10 11006_create_invalid_dictionary:                                        [ OK ] 1.64 sec.
+2024-05-23 03:34:26 11008_no_ip_port_dictionary:                                            [ OK ] 15.98 sec.
+2024-05-23 03:34:26 
+2024-05-23 03:34:26 1 tests passed. 0 tests skipped. 21.08 s elapsed (MainProcess).
+2024-05-23 03:34:26 
+2024-05-23 03:34:26 No queries hung.
+2024-05-23 03:34:26 
+2024-05-23 03:34:26 is_sanitizer_pass skipped due to ASAN_OPTIONS not in environ
+2024-05-23 03:34:26 All tests have finished.

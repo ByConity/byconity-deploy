@@ -1,0 +1,238 @@
+2024-05-23 04:49:29 Using queries from './queries' directory
+2024-05-23 04:49:29 Using clickhouse-client as client program (expecting split build)
+2024-05-23 04:49:29 Namespace(queries='./queries', tmp='./queries', binary='clickhouse', client='clickhouse-client --host=192.168.91.7 --port=9000', extract_from_config='clickhouse extract-from-config', configclient=None, configserver='/etc/clickhouse-server/config.xml', output=None, timeout=600, global_time_limit=None, test=[], disabled=False, stop=True, order='asc', testname=None, hung_check=True, force_color=False, database=None, no_drop_if_fail=False, hide_db_name=False, parallel='1/1', jobs=4, test_runs=1, unified=3, server_check_retries=30, skip_list_path='./queries/skip_list.json', use_skip_list=True, db_engine=None, replicated_database=False, no_stateless=False, no_stateful=False, skip=None, sequential=set(), no_long=True, client_option=['enable_optimizer_fallback=0', 'enable_optimizer=1'], print_time=True, zookeeper=None, shard=None, run=['cnch_stateless_no_tenant'], locate_asan_error_to_case=False, s3=False, single_server=False)
+2024-05-23 04:49:29 Connecting to ClickHouse server... OK
+2024-05-23 04:49:31 Use build flag: release-build, skips tests: {'02021_test_perfect_shard_in', '01829_test_aggregation_bitmapColumnDiff', '08000_test_in_distributed_stages', '02032_function_version_compare', '01455_opentelemetry_distributed', '01475_read_subcolumns', '01829_test_aggregation_bitmapExpressionComputation_two_shards', '10062_any_left_nestloop_join', '01193_metadata_loading', '00142_parse_timestamp_as_datetime', '10065_zookeeper_test_uniquekey_vertical_merge', '10060_zookeeper_test_uniquekey_unique_merge', '01323_add_scalars_in_time', '01801_s3_cluster', '08000_scalar_query_distributed_stages', '10061_zookeeper_test_uniquekey_alter_engine_table_level', '00900_long_parquet_load', '08000_test_multi_join_distributed_stages', '01594_too_low_memory_limits', '01829_test_aggregation_bitmapMaxLevel', '01103_check_cpu_instructions_at_startup', '00829_bitmap64_function', '10044_zookeeper_test_uniquekey_unique_merge_tree_optimize', '01548_parallel_parsing_max_memory', '08000_test_join_distributed_stages', '00145_aggregate_functions_statistics', '01269_toStartOfSecond', '01598_memory_limit_zeros', '00515_enhanced_time_zones', '02021_test_perfect_shard', '00634_performance_introspection_and_logging', '01829_test_aggregation_bitmapExpressionComputation', '00743_aggregation_finder_funnel_group', '10033_zookeeper_test_uniquekey_partition_level_unique', '01086_odbc_roundtrip', '10062_any_left_noteq_nestloop_join'}
+2024-05-23 04:49:31 Use build flag: polymorphic-parts, skips tests: {'01508_partition_pruning_long', '01482_move_to_prewhere_and_cast', '01158_zookeeper_log'}
+2024-05-23 04:49:31 Use build flag: multi-servers, skips tests: {'50010_parts_info', '45013_cache_policy', '50009_custom_cnch_merge_tree', '00388_enum_with_totals', '45005_memory_stats', '10120_optimize_query', '01682_cache_dictionary_complex_key_ck233', '10202_part_gc', '01007_ttl_create_nullable_date_in_mysql', '50011_parts_info_for_unique_table', '01765_hashed_dictionary_simple_key_ck233', '01004_optimize_final', '10054_mv_refresh_where_sync', '10023_rename', 'control_all_bg_jobs', '45007_date_stats', '01676_range_hashed_dictionary_ck233', '10054_mv_refresh1', '45004_create_stats_sample_acc', '10102_uniquekey_insert_values', '10200_table_snapshots', '45004_create_stats_sample_acc_ndv', '45007_ip_stats', '40023_mv_with_topn_filtering', '01918_test_nullable_skip_index', '01001_alter_delete', '45015_explain_stats_lowcard', '45004_stats_star', '65001_ddl_case_insensitive', '10112_uniquekey_merge_vertical', '65001_ddl_case_insensitive_upper', '10113_uniquekey_rename_with_staged_parts', '45004_create_stats_sample'}
+2024-05-23 04:49:31 Found file with skip-list ./queries/skip_list.json, 72 test will be skipped
+2024-05-23 04:49:31 Won't run stateful tests because test data wasn't loaded.
+2024-05-23 04:49:31 Found 158 parallel tests and 0 sequential tests
+2024-05-23 04:49:31 
+2024-05-23 04:49:31 Running about 39 cnch_stateless_no_tenant tests (ForkPoolWorker-3).
+2024-05-23 04:49:31 
+2024-05-23 04:49:31 01001_alter_delete:                                                     [ SKIPPED ] - skip
+2024-05-23 04:49:31 
+2024-05-23 04:49:31 Running about 39 cnch_stateless_no_tenant tests (ForkPoolWorker-1).
+2024-05-23 04:49:31 
+2024-05-23 04:49:31 00210_handle_nullable_array:                                            [ OK ] 0.28 sec.
+2024-05-23 04:49:32 
+2024-05-23 04:49:32 Running about 39 cnch_stateless_no_tenant tests (ForkPoolWorker-2).
+2024-05-23 04:49:32 
+2024-05-23 04:49:32 00384_column_aggregate_function_insert_from:                            [ OK ] 0.59 sec.
+2024-05-23 04:49:32 10062_nestloop_join_use_using:                                          [ OK ] 0.43 sec.
+2024-05-23 04:49:32 
+2024-05-23 04:49:32 Running about 39 cnch_stateless_no_tenant tests (ForkPoolWorker-4).
+2024-05-23 04:49:32 
+2024-05-23 04:49:32 02953_slow_create_view:                                                 [ OK ] 0.75 sec.
+2024-05-23 04:49:32 40003_bucket_table_join:                                                [ OK ] 0.38 sec.
+2024-05-23 04:49:32 40009_tea_limit:                                                        [ OK ] 0.39 sec.
+2024-05-23 04:49:32 40008_map_implicit_column:                                              [ OK ] 0.53 sec.
+2024-05-23 04:49:33 40010_verify_post_aggregate_expression_subquery:                        [ OK ] 0.51 sec.
+2024-05-23 04:49:33 40014_set_operation_implicit_conversion_2:                              [ OK ] 0.27 sec.
+2024-05-23 04:49:33 40013_verify_grouping_operation:                                        [ OK ] 0.51 sec.
+2024-05-23 04:49:33 10020_test_fusion_merge:                                                [ OK ] 1.67 sec.
+2024-05-23 04:49:33 40016_join_using_implicit_conversion_clickhouse:                        [ OK ] 0.31 sec.
+2024-05-23 04:49:33 40020_lossy_type_conversion:                                            [ OK ] 0.31 sec.
+2024-05-23 04:49:33 40021_decimal_division_use_extended_scale:                              [ OK ] 0.45 sec.
+2024-05-23 04:49:33 40022_convert_type_for_map:                                             [ OK ] 0.24 sec.
+2024-05-23 04:49:33 40022_decimal_arithmetic_promote_storage:                               [ OK ] 0.42 sec.
+2024-05-23 04:49:33 40018_select_qualified_asterisk:                                        [ OK ] 0.76 sec.
+2024-05-23 04:49:34 40022_topn_filtering_opt:                                               [ OK ] 0.44 sec.
+2024-05-23 04:49:34 40032_single_thread_agg_funcs:                                          [ OK ] 0.23 sec.
+2024-05-23 04:49:34 40023_reorder_adjacent_windows:                                         [ OK ] 0.69 sec.
+2024-05-23 04:49:34 40033_unwrap_cast_expr_core:                                            [ OK ] 0.29 sec.
+2024-05-23 04:49:34 40033_aliases_visibility_scope:                                         [ OK ] 0.30 sec.
+2024-05-23 04:49:35 40035_getMapKeys:                                                       [ OK ] 0.29 sec.
+2024-05-23 04:49:35 40034_subcolumn_opt_through_union:                                      [ OK ] 0.76 sec.
+2024-05-23 04:49:35 40035_function_as_correlate_filter:                                     [ OK ] 0.72 sec.
+2024-05-23 04:49:36 40036_cross_to_inner_with_coercion:                                     [ OK ] 0.45 sec.
+2024-05-23 04:49:36 40036_opt_prewhere_wrong_column:                                        [ OK ] 0.35 sec.
+2024-05-23 04:49:36 40037_unify_optimizer_projection_flag:                                  [ OK ] 0.60 sec.
+2024-05-23 04:49:36 40038_mix_ansi_settings:                                                [ OK ] 0.26 sec.
+2024-05-23 04:49:37 40037_mv_match_consistency_check:                                       [ OK ] 0.80 sec.
+2024-05-23 04:49:37 40039_dialect_type_minor_fix:                                           [ OK ] 0.25 sec.
+2024-05-23 04:49:37 40040_check_identifier_begin_valid:                                     [ OK ] 0.26 sec.
+2024-05-23 04:49:37 /root/app/queries/4_cnch_stateless_no_tenant/40023_mv_match_rewrite_topn_filtering.sh-----have warning!
+2024-05-23 04:49:37 /root/app/queries/4_cnch_stateless_no_tenant/40023_mv_match_rewrite_topn_filtering.sh-----init_log: [byconity-server-0] 2024.05.23 07:49:35.226512 [ 17745 ] {37360445-9774-45f1-8058-5cfd624d77aa} <Warning> DatabaseCatalog: Found table test.mv_block_number_agg_hit (2839745d-9f6e-44cd-8a75-17fdfd6631ac) in the graph with unexpected UUID f525378a-6052-47a4-94f7-2d250742c915
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:35.226546 [ 17745 ] {37360445-9774-45f1-8058-5cfd624d77aa} <Warning> DatabaseCatalog: Name conflict in the graph having table test.mv_block_number_agg_hit (f525378a-6052-47a4-94f7-2d250742c915) while adding table test.mv_block_number_agg_hit (2839745d-9f6e-44cd-8a75-17fdfd6631ac). Will remove test.mv_block_number_agg_hit (f525378a-6052-47a4-94f7-2d250742c915) from the graph
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:35.321599 [ 17744 ] {250cd767-7b6a-4c86-9e6f-124962c7fcda} <Warning> DatabaseCatalog: Found table test.mv_tx_from_address_hit (c4e5f69b-9ff9-4d42-817e-7f21023573a0) in the graph with unexpected UUID 298bd2ab-bb87-4f31-a161-c07d0ad89243
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:35.321649 [ 17744 ] {250cd767-7b6a-4c86-9e6f-124962c7fcda} <Warning> DatabaseCatalog: Name conflict in the graph having table test.mv_tx_from_address_hit (298bd2ab-bb87-4f31-a161-c07d0ad89243) while adding table test.mv_tx_from_address_hit (c4e5f69b-9ff9-4d42-817e-7f21023573a0). Will remove test.mv_tx_from_address_hit (298bd2ab-bb87-4f31-a161-c07d0ad89243) from the graph
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:35.419747 [ 17744 ] {b4102cc3-7256-4cf8-9e7b-90bec079f496} <Warning> DatabaseCatalog: Found table test.mv_tx_to_address_hit (faa7a783-45a9-4736-b216-e7d05737509f) in the graph with unexpected UUID 78a72d66-3992-44bd-a2f3-b54fe5f3c10b
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:35.419817 [ 17744 ] {b4102cc3-7256-4cf8-9e7b-90bec079f496} <Warning> DatabaseCatalog: Name conflict in the graph having table test.mv_tx_to_address_hit (78a72d66-3992-44bd-a2f3-b54fe5f3c10b) while adding table test.mv_tx_to_address_hit (faa7a783-45a9-4736-b216-e7d05737509f). Will remove test.mv_tx_to_address_hit (78a72d66-3992-44bd-a2f3-b54fe5f3c10b) from the graph
+2024-05-23 04:49:37 
+2024-05-23 04:49:37 40023_mv_match_rewrite_topn_filtering:                                  [ OK ] 3.51 sec.
+2024-05-23 04:49:37 40029_unique_table_with_prewhere_opt:                                   [ OK ] 3.62 sec.
+2024-05-23 04:49:37 40040_insert_select_worker_property:                                    [ OK ] 0.51 sec.
+2024-05-23 04:49:37 40041_optimizer_check_in_table:                                         [ OK ] 0.27 sec.
+2024-05-23 04:49:37 /root/app/queries/4_cnch_stateless_no_tenant/40040_insert_select_fail.sql-----have warning!
+2024-05-23 04:49:37 /root/app/queries/4_cnch_stateless_no_tenant/40040_insert_select_fail.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:37.590252 [ 17745 ] {39ddd4eb-6427-478a-86a5-33becb674e2c} <Warning> DatabaseCatalog: Found table test.mv1 (a406a335-74d5-451e-a4d9-044dd1cc83db) in the graph with unexpected UUID faa9467d-dc76-4180-8276-7db92449896b
+2024-05-23 04:49:37 [byconity-server-0] 2024.05.23 07:49:37.590280 [ 17745 ] {39ddd4eb-6427-478a-86a5-33becb674e2c} <Warning> DatabaseCatalog: Name conflict in the graph having table test.mv1 (faa9467d-dc76-4180-8276-7db92449896b) while adding table test.mv1 (a406a335-74d5-451e-a4d9-044dd1cc83db). Will remove test.mv1 (faa9467d-dc76-4180-8276-7db92449896b) from the graph
+2024-05-23 04:49:37 
+2024-05-23 04:49:37 40040_insert_select_fail:                                               [ OK ] 0.42 sec.
+2024-05-23 04:49:37 40043_execute_subquery_skip_with_cte:                                   [ OK ] 0.25 sec.
+2024-05-23 04:49:37 40044_unwrap_cast_optimization_in_lambda:                               [ OK ] 0.25 sec.
+2024-05-23 04:49:38 40046_join_unknown_identifier:                                          [ OK ] 0.27 sec.
+2024-05-23 04:49:38 40045_mv_match_range_filter:                                            [ OK ] 0.63 sec.
+2024-05-23 04:49:38 40047_duplicate_subquery_expression_planning:                           [ OK ] 0.46 sec.
+2024-05-23 04:49:38 40042_multi_join_rewrite_v2:                                            [ OK ] 0.91 sec.
+2024-05-23 04:49:38 40049_function_in_wrong_result_type_coredump:                           [ OK ] 0.34 sec.
+2024-05-23 04:49:38 /root/app/queries/4_cnch_stateless_no_tenant/40051_mv_match_rewrite_keep_prewhere.sql-----have warning!
+2024-05-23 04:49:38 /root/app/queries/4_cnch_stateless_no_tenant/40051_mv_match_rewrite_keep_prewhere.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:38.656108 [ 17745 ] {71e704b9-948f-4452-8176-3d054a5b864e} <Warning> DatabaseCatalog: Found table test.mv40051 (fe9c67d5-499e-4d4a-9c28-6fcd1fadf2f0) in the graph with unexpected UUID 2f670fa3-c1c1-405b-bf2b-b2c14c713d07
+2024-05-23 04:49:38 [byconity-server-0] 2024.05.23 07:49:38.656140 [ 17745 ] {71e704b9-948f-4452-8176-3d054a5b864e} <Warning> DatabaseCatalog: Name conflict in the graph having table test.mv40051 (2f670fa3-c1c1-405b-bf2b-b2c14c713d07) while adding table test.mv40051 (fe9c67d5-499e-4d4a-9c28-6fcd1fadf2f0). Will remove test.mv40051 (2f670fa3-c1c1-405b-bf2b-b2c14c713d07) from the graph
+2024-05-23 04:49:38 
+2024-05-23 04:49:38 40051_mv_match_rewrite_keep_prewhere:                                   [ OK ] 0.39 sec.
+2024-05-23 04:49:38 40053_rewrite_complex_predicate_by_domain:                              [ OK ] 0.37 sec.
+2024-05-23 04:49:38 40053_subcolumn_in_prewhere:                                            [ OK ] 0.47 sec.
+2024-05-23 04:49:39 40052_deadlock_cte:                                                     [ OK ] 0.60 sec.
+2024-05-23 04:49:39 40063_prune_prewhere_column_usage:                                      [ OK ] 0.31 sec.
+2024-05-23 04:49:39 /root/app/queries/4_cnch_stateless_no_tenant/40056_mv_match_rewrite_consider_sort_key.sql-----have warning!
+2024-05-23 04:49:39 /root/app/queries/4_cnch_stateless_no_tenant/40056_mv_match_rewrite_consider_sort_key.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:39.082377 [ 15020 ] {9ceb1f7c-ac8b-47dd-9831-8e3d4b30e25b} <Warning> DatabaseCatalog: Found table test.t40056_mv1 (6a85891b-2092-46d5-b783-cca0753a776d) in the graph with unexpected UUID b15764c1-c77d-4b72-a32d-b3437912f962
+2024-05-23 04:49:39 [byconity-server-0] 2024.05.23 07:49:39.082404 [ 15020 ] {9ceb1f7c-ac8b-47dd-9831-8e3d4b30e25b} <Warning> DatabaseCatalog: Name conflict in the graph having table test.t40056_mv1 (b15764c1-c77d-4b72-a32d-b3437912f962) while adding table test.t40056_mv1 (6a85891b-2092-46d5-b783-cca0753a776d). Will remove test.t40056_mv1 (b15764c1-c77d-4b72-a32d-b3437912f962) from the graph
+2024-05-23 04:49:39 [byconity-server-0] 2024.05.23 07:49:39.116345 [ 15020 ] {da66761d-65f7-4f05-a65a-8ccaf04c912e} <Warning> DatabaseCatalog: Found table test.t40056_mv2 (57c522c4-32c0-4923-b96f-5387b702cd10) in the graph with unexpected UUID 5c76e387-45c7-4a72-bcc6-0630aa22bb43
+2024-05-23 04:49:39 [byconity-server-0] 2024.05.23 07:49:39.116372 [ 15020 ] {da66761d-65f7-4f05-a65a-8ccaf04c912e} <Warning> DatabaseCatalog: Name conflict in the graph having table test.t40056_mv2 (5c76e387-45c7-4a72-bcc6-0630aa22bb43) while adding table test.t40056_mv2 (57c522c4-32c0-4923-b96f-5387b702cd10). Will remove test.t40056_mv2 (5c76e387-45c7-4a72-bcc6-0630aa22bb43) from the graph
+2024-05-23 04:49:39 
+2024-05-23 04:49:39 40056_mv_match_rewrite_consider_sort_key:                               [ OK ] 0.57 sec.
+2024-05-23 04:49:39 40061_push_storage_filter:                                              [ OK ] 0.54 sec.
+2024-05-23 04:49:39 40066_common_expression_share:                                          [ OK ] 0.48 sec.
+2024-05-23 04:49:39 40067_finder_slow_query:                                                [ OK ] 0.38 sec.
+2024-05-23 04:49:39 40070_better_constant_folding:                                          [ OK ] 0.26 sec.
+2024-05-23 04:49:39 40069_common_expression_share_with_projection:                          [ OK ] 0.53 sec.
+2024-05-23 04:49:39 40073_ansi_better_aliases:                                              [ OK ] 0.41 sec.
+2024-05-23 04:49:40 40074_map_keys_implicit_column:                                         [ OK ] 0.34 sec.
+2024-05-23 04:49:40 40075_subcolumn_with_cte:                                               [ OK ] 0.36 sec.
+2024-05-23 04:49:40 40078_optimizer_for_create_select:                                      [ OK ] 0.35 sec.
+2024-05-23 04:49:40 40080_fix_decimal_division_use_extended_scale_bug:                      [ OK ] 0.34 sec.
+2024-05-23 04:49:40 40080_array_join_with_lambda_expression:                                [ OK ] 0.26 sec.
+2024-05-23 04:49:40 40081_join_1_equals_1:                                                  [ OK ] 0.27 sec.
+2024-05-23 04:49:40 40082_nonstandard_having:                                               [ OK ] 0.24 sec.
+2024-05-23 04:49:40 40084_handle_non_deterministic_function_better:                         [ OK ] 0.30 sec.
+2024-05-23 04:49:40 40086_not_translate_in_values:                                          [ OK ] 0.25 sec.
+2024-05-23 04:49:40 40085_handle_nested_subquery_in_subquery_args:                          [ OK ] 0.42 sec.
+2024-05-23 04:49:40 40087_non_deterministic_expression_with_subquery:                       [ OK ] 0.24 sec.
+2024-05-23 04:49:40 40090_insert_query_with_asterisk:                                       [ OK ] 0.35 sec.
+2024-05-23 04:49:41 40094_fix_bitmap_index_not_pushed_down:                                 [ OK ] 0.34 sec.
+2024-05-23 04:49:41 40093_push_agg_through_join_illegal_symbol:                             [ OK ] 0.41 sec.
+2024-05-23 04:49:41 40095_fix_toDateOrNull:                                                 [ OK ] 0.24 sec.
+2024-05-23 04:49:41 40088_fix_share_common_expression_with_rf:                              [ OK ] 0.65 sec.
+2024-05-23 04:49:41 41002_map_type_ser:                                                     [ OK ] 0.36 sec.
+2024-05-23 04:49:41 41015_system_table_view:                                                [ OK ] 0.28 sec.
+2024-05-23 04:49:41 41014_mv_match_wrongly:                                                 [ OK ] 0.45 sec.
+2024-05-23 04:49:41 41009_remove_apply_with_join_use_nulls:                                 [ OK ] 0.65 sec.
+2024-05-23 04:49:41 45007_ip_stats:                                                         [ SKIPPED ] - skip
+2024-05-23 04:49:41 45007_date_stats:                                                       [ SKIPPED ] - skip
+2024-05-23 04:49:41 42001_optimize_limit_zero:                                              [ OK ] 0.30 sec.
+2024-05-23 04:49:42 42000_offloading_with_optimizer_join:                                   [ OK ] 0.52 sec.
+2024-05-23 04:49:42 41015_column_pruning_issue:                                             [ OK ] 0.61 sec.
+2024-05-23 04:49:42 45009_optimizer_support_untuple:                                        [ OK ] 0.47 sec.
+2024-05-23 04:49:42 45013_cache_policy:                                                     [ SKIPPED ] - skip
+2024-05-23 04:49:42 45012_stats_ddl:                                                        [ OK ] 0.36 sec.
+2024-05-23 04:49:42 45015_explain_stats_lowcard:                                            [ SKIPPED ] - skip
+2024-05-23 04:49:42 45015_explain_stats_lowcard_nullable:                                   [ SKIPPED ] - skip
+2024-05-23 04:49:42 45008_type_list_for_optimizer:                                          [ OK ] 0.97 sec.
+2024-05-23 04:49:43 /root/app/queries/4_cnch_stateless_no_tenant/45010_test_exclude_stats.sql-----have warning!
+2024-05-23 04:49:43 /root/app/queries/4_cnch_stateless_no_tenant/45010_test_exclude_stats.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:42.477283 [ 17744 ] {722c1510-1c7d-4205-b617-539e24ce140d} <Warning> DatabaseCatalog: Found table test_45010.mv (6e833068-81b7-416e-8104-8be0bba906c1) in the graph with unexpected UUID ec0d3ada-d00f-4607-8f1f-6eef39955a56
+2024-05-23 04:49:43 [byconity-server-0] 2024.05.23 07:49:42.477324 [ 17744 ] {722c1510-1c7d-4205-b617-539e24ce140d} <Warning> DatabaseCatalog: Name conflict in the graph having table test_45010.mv (ec0d3ada-d00f-4607-8f1f-6eef39955a56) while adding table test_45010.mv (6e833068-81b7-416e-8104-8be0bba906c1). Will remove test_45010.mv (ec0d3ada-d00f-4607-8f1f-6eef39955a56) from the graph
+2024-05-23 04:49:43 
+2024-05-23 04:49:43 45010_test_exclude_stats:                                               [ OK ] 1.41 sec.
+2024-05-23 04:49:43 45014_uniform_sample_by_range:                                          [ OK ] 1.39 sec.
+2024-05-23 04:49:44 45020_stats_bucket_size:                                                [ OK ] 0.64 sec.
+2024-05-23 04:49:44 45015_explain_stats_nullable:                                           [ OK ] 1.85 sec.
+2024-05-23 04:49:44 45015_explain_stats:                                                    [ OK ] 1.72 sec.
+2024-05-23 04:49:44 45022_override_histogram:                                               [ OK ] 0.55 sec.
+2024-05-23 04:49:44 45021_stats_equal_height:                                               [ OK ] 1.00 sec.
+2024-05-23 04:49:45 46007_merge_predicates_in_filter_node:                                  [ OK ] 0.39 sec.
+2024-05-23 04:49:45 46002_reorder_adjacent_windows:                                         [ OK ] 0.77 sec.
+2024-05-23 04:49:45 46001_remove_redundant_distinct:                                        [ OK ] 1.05 sec.
+2024-05-23 04:49:45 46008_optimizer_support_explain_pipeline:                               [ OK ] 0.58 sec.
+2024-05-23 04:49:45 46008_outfile_compression:                                              [ OK ] 0.50 sec.
+2024-05-23 04:49:45 46009_optimizer_support_explain_syntax:                                 [ OK ] 0.30 sec.
+2024-05-23 04:49:45 46009_join_with_lambda_where:                                           [ OK ] 0.29 sec.
+2024-05-23 04:49:45 46010_explain_with_settings:                                            [ OK ] 0.32 sec.
+2024-05-23 04:49:45 46011_optimizer_explain_analyze:                                        [ OK ] 0.42 sec.
+2024-05-23 04:49:45 46011_part_prune:                                                       [ OK ] 0.42 sec.
+2024-05-23 04:49:45 46012_deterministic:                                                    [ OK ] 0.33 sec.
+2024-05-23 04:49:46 48007_fix_countsubstrings:                                              [ OK ] 0.24 sec.
+2024-05-23 04:49:46 46012_optimize_multi_distinct:                                          [ OK ] 0.54 sec.
+2024-05-23 04:49:46 46017_array_element_rewrite:                                            [ OK ] 0.36 sec.
+2024-05-23 04:49:46 48006_optimizer_support_array_join:                                     [ OK ] 0.55 sec.
+2024-05-23 04:49:46 48011_rewrite_like_function:                                            [ OK ] 0.30 sec.
+2024-05-23 04:49:46 48009_optimizer_support_semi_anti:                                      [ OK ] 0.57 sec.
+2024-05-23 04:49:46 48012_fix_normalize_rule:                                               [ OK ] 0.31 sec.
+2024-05-23 04:49:46 48013_optimizer_fallback:                                               [ OK ] 0.27 sec.
+2024-05-23 04:49:47 48013_fix_expranalyzer_issue:                                           [ OK ] 0.26 sec.
+2024-05-23 04:49:47 48013_cte_build_plan:                                                   [ OK ] 0.54 sec.
+2024-05-23 04:49:47 48016_push_limit_union:                                                 [ OK ] 0.28 sec.
+2024-05-23 04:49:47 48015_simplify_multiIf_function:                                        [ OK ] 0.54 sec.
+2024-05-23 04:49:47 /root/app/queries/4_cnch_stateless_no_tenant/48011_mv_match_rewrite_optimizer.sql-----have warning!
+2024-05-23 04:49:47 /root/app/queries/4_cnch_stateless_no_tenant/48011_mv_match_rewrite_optimizer.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:47.064131 [ 17745 ] {d5c6e7b1-5517-49e5-b6aa-5ba27c7415e3} <Warning> DatabaseCatalog: Found table test_8z1v5h.mv_define (64aa97f7-be62-4f8b-9430-ad683e45ad79) in the graph with unexpected UUID 5f0cb00d-6c94-4fdf-9726-9a7fbd5e44c7
+2024-05-23 04:49:47 [byconity-server-0] 2024.05.23 07:49:47.064170 [ 17745 ] {d5c6e7b1-5517-49e5-b6aa-5ba27c7415e3} <Warning> DatabaseCatalog: Name conflict in the graph having table test_8z1v5h.mv_define (5f0cb00d-6c94-4fdf-9726-9a7fbd5e44c7) while adding table test_8z1v5h.mv_define (64aa97f7-be62-4f8b-9430-ad683e45ad79). Will remove test_8z1v5h.mv_define (5f0cb00d-6c94-4fdf-9726-9a7fbd5e44c7) from the graph
+2024-05-23 04:49:47 [byconity-server-0] 2024.05.23 07:49:47.271829 [ 17745 ] {51d4b71e-d5bf-4197-bf0e-5d58c5c53112} <Warning> DatabaseCatalog: Found table test_8z1v5h.mv_define (85f628b5-17ab-4322-ab5d-474501a72f37) in the graph with unexpected UUID 64aa97f7-be62-4f8b-9430-ad683e45ad79
+2024-05-23 04:49:47 [byconity-server-0] 2024.05.23 07:49:47.271863 [ 17745 ] {51d4b71e-d5bf-4197-bf0e-5d58c5c53112} <Warning> DatabaseCatalog: Name conflict in the graph having table test_8z1v5h.mv_define (64aa97f7-be62-4f8b-9430-ad683e45ad79) while adding table test_8z1v5h.mv_define (85f628b5-17ab-4322-ab5d-474501a72f37). Will remove test_8z1v5h.mv_define (64aa97f7-be62-4f8b-9430-ad683e45ad79) from the graph
+2024-05-23 04:49:47 [byconity-server-0] 2024.05.23 07:49:47.475847 [ 17745 ] {8d9cba9d-2998-4413-a6ac-aac83f4bda5a} <Warning> DatabaseCatalog: Found table test_8z1v5h.mv_define (39caa9aa-10e1-4733-8bfb-2476e329ff17) in the graph with unexpected UUID 85f628b5-17ab-4322-ab5d-474501a72f37
+2024-05-23 04:49:47 [byconity-server-0] 2024.05.23 07:49:47.475879 [ 17745 ] {8d9cba9d-2998-4413-a6ac-aac83f4bda5a} <Warning> DatabaseCatalog: Name conflict in the graph having table test_8z1v5h.mv_define (85f628b5-17ab-4322-ab5d-474501a72f37) while adding table test_8z1v5h.mv_define (39caa9aa-10e1-4733-8bfb-2476e329ff17). Will remove test_8z1v5h.mv_define (85f628b5-17ab-4322-ab5d-474501a72f37) from the graph
+2024-05-23 04:49:47 
+2024-05-23 04:49:47 48011_mv_match_rewrite_optimizer:                                       [ OK ] 1.30 sec.
+2024-05-23 04:49:47 48016_cte_projection:                                                   [ OK ] 0.34 sec.
+2024-05-23 04:49:47 48016_plan_cache:                                                       [ OK ] 0.62 sec.
+2024-05-23 04:49:48 48017_expand_asterisk_in_function_ansi:                                 [ OK ] 0.36 sec.
+2024-05-23 04:49:48 48017_not_push_filter_into_any_join:                                    [ OK ] 0.50 sec.
+2024-05-23 04:49:48 48018_push_limit_into_sorting:                                          [ OK ] 0.35 sec.
+2024-05-23 04:49:48 48019_expand_asterisk_in_function_ansi:                                 [ OK ] 0.37 sec.
+2024-05-23 04:49:48 48016_execute_uncorrelated_subquery_first:                              [ OK ] 1.03 sec.
+2024-05-23 04:49:48 48020_remove_aggregating_with_readnothing:                              [ OK ] 0.34 sec.
+2024-05-23 04:49:48 48022_explain_metadata:                                                 [ OK ] 0.52 sec.
+2024-05-23 04:49:49 48021_workload_dump_reproduce:                                          [ OK ] 0.95 sec.
+2024-05-23 04:49:49 48023_eliminate_group_by_constants:                                     [ OK ] 0.44 sec.
+2024-05-23 04:49:49 48021_sql_binding:                                                      [ OK ] 1.09 sec.
+2024-05-23 04:49:49 48024_add_required_property_in_set:                                     [ OK ] 0.35 sec.
+2024-05-23 04:49:49 /root/app/queries/4_cnch_stateless_no_tenant/48023_eliminate_join_by_fk.sql-----have warning!
+2024-05-23 04:49:49 /root/app/queries/4_cnch_stateless_no_tenant/48023_eliminate_join_by_fk.sql-----init_log: [byconity-server-0] 2024.05.23 07:49:49.596396 [ 17744 ] {82efdab3-654b-45fa-871b-89bacd83a331} <Warning> ShareCommonExpression: build transform map failed, this normally indicates a name ambiguity
+2024-05-23 04:49:49 [byconity-server-0] 2024.05.23 07:49:49.636139 [ 17744 ] {eebf9d27-d70f-4978-8117-23a23039f13a} <Warning> ShareCommonExpression: build transform map failed, this normally indicates a name ambiguity
+2024-05-23 04:49:49 [byconity-server-0] 2024.05.23 07:49:49.749812 [ 17744 ] {6e02dd41-39ae-4b88-a945-cf9b60beea7f} <Warning> ShareCommonExpression: build transform map failed, this normally indicates a name ambiguity
+2024-05-23 04:49:49 
+2024-05-23 04:49:49 48023_eliminate_join_by_fk:                                             [ OK ] 1.25 sec.
+2024-05-23 04:49:49 48023_foreign_key_definition:                                           [ OK ] 0.63 sec.
+2024-05-23 04:49:50 48023_unique_not_enforced_definition:                                   [ OK ] 0.62 sec.
+2024-05-23 04:49:50 48024_cluster_by_hint:                                                  [ OK ] 0.37 sec.
+2024-05-23 04:49:50 48025_agg_block_list:                                                   [ OK ] 0.31 sec.
+2024-05-23 04:49:50 48025_grace_hash_hint:                                                  [ OK ] 0.51 sec.
+2024-05-23 04:49:50 48027_agg_power_set:                                                    [ OK ] 0.30 sec.
+2024-05-23 04:49:50 48025_remove_redundant_union:                                           [ OK ] 0.75 sec.
+2024-05-23 04:49:50 48028_only_push_bitmap_with_index:                                      [ OK ] 0.42 sec.
+2024-05-23 04:49:50 48029_remove_redundant_cast:                                            [ OK ] 0.35 sec.
+2024-05-23 04:49:51 48030_grouping_set_must_exchange:                                       [ OK ] 0.43 sec.
+2024-05-23 04:49:51 48028_explain_format_json:                                              [ OK ] 0.85 sec.
+2024-05-23 04:49:51 48032_active_prewhere:                                                  [ OK ] 0.39 sec.
+2024-05-23 04:49:51 48031_fix_limit_by_property:                                            [ OK ] 0.43 sec.
+2024-05-23 04:49:51 48034_remove_dupliate_predicate:                                        [ OK ] 0.30 sec.
+2024-05-23 04:49:51 48033_analyzer_constant_folding:                                        [ OK ] 0.38 sec.
+2024-05-23 04:49:51 48034_non_unique_table_upgrade_with_version_column:                     [ OK ] 0.32 sec.
+2024-05-23 04:49:51 48035_test_unique_tbl_insert_decimal:                                   [ OK ] 0.48 sec.
+2024-05-23 04:49:51 48035_prepared_statement:                                               [ OK ] 0.37 sec.
+2024-05-23 04:49:51 48035_insert_select_no_gather:                                          [ OK ] 0.33 sec.
+2024-05-23 04:49:52 48036_verify_nullable_type_after_eliminate_join_by_fk_in_cte:           [ OK ] 0.48 sec.
+2024-05-23 04:49:52 48037_convert_lc_nullable_to_nullable:                                  [ OK ] 0.27 sec.
+2024-05-23 04:49:52 48036_add_default_database_for_prepared_statement:                      [ OK ] 0.49 sec.
+2024-05-23 04:49:52 
+2024-05-23 04:49:52 1 tests passed. 2 tests skipped. 20.54 s elapsed (ForkPoolWorker-3).
+2024-05-23 04:49:52 48037_tealimit_ansi:                                                    [ OK ] 0.37 sec.
+2024-05-23 04:49:52 
+2024-05-23 04:49:52 1 tests passed. 2 tests skipped. 20.56 s elapsed (ForkPoolWorker-1).
+2024-05-23 04:49:52 48045_array_join:                                                       [ OK ] 0.41 sec.
+2024-05-23 04:49:52 
+2024-05-23 04:49:52 1 tests passed. 2 tests skipped. 20.76 s elapsed (ForkPoolWorker-2).
+2024-05-23 04:49:54 /root/app/queries/4_cnch_stateless_no_tenant/50010_direct_insert.sh-----have warning!
+2024-05-23 04:49:54 /root/app/queries/4_cnch_stateless_no_tenant/50010_direct_insert.sh-----init_log: [byconity-server-0] 2024.05.23 07:49:53.395235 [ 17745 ] {1d110e4c-69ae-4552-bf6c-8620db09096a} <Warning> DatabaseCatalog: Found table test.events_aggregate_view (d4ec3a89-9301-43ec-abd0-abaafaa44fdc) in the graph with unexpected UUID 813118d9-a47f-43a5-8560-cdd8cfb3cade
+2024-05-23 04:49:54 [byconity-server-0] 2024.05.23 07:49:53.395284 [ 17745 ] {1d110e4c-69ae-4552-bf6c-8620db09096a} <Warning> DatabaseCatalog: Name conflict in the graph having table test.events_aggregate_view (813118d9-a47f-43a5-8560-cdd8cfb3cade) while adding table test.events_aggregate_view (d4ec3a89-9301-43ec-abd0-abaafaa44fdc). Will remove test.events_aggregate_view (813118d9-a47f-43a5-8560-cdd8cfb3cade) from the graph
+2024-05-23 04:49:54 
+2024-05-23 04:49:54 50010_direct_insert:                                                    [ OK ] 2.01 sec.
+2024-05-23 04:49:54 
+2024-05-23 04:49:54 1 tests passed. 0 tests skipped. 22.48 s elapsed (ForkPoolWorker-4).
+2024-05-23 04:49:54 
+2024-05-23 04:49:54 0 tests passed. 0 tests skipped. 0.00 s elapsed (MainProcess).
+2024-05-23 04:49:54 
+2024-05-23 04:49:54 No queries hung.
+2024-05-23 04:49:54 
+2024-05-23 04:49:54 is_sanitizer_pass skipped due to ASAN_OPTIONS not in environ
+2024-05-23 04:49:54 All tests have finished.

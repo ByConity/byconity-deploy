@@ -1,0 +1,7 @@
+65000_mysql_bi_ddl	OK	0.37
+11000_flat_dictionary	OK	1.52
+11001_hash_dictionary	OK	0.71
+11002_range_hash_dictionary	OK	0.44
+11003_complex_hash_dictionary	OK	0.77
+11006_create_invalid_dictionary	OK	1.64
+11008_no_ip_port_dictionary	OK	15.98

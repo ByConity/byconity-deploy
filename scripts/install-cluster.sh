@@ -1,11 +1,14 @@
 #! /bin/bash
+#
 NAMESPACE="${1:-byconity}"
-
 echo "NAMESPACE: ${NAMESPACE}"
 
-if kubectl get namespaces | grep ${NAMESPACE}; then
-	echo "$NAMESPACE already exists, please unstiall it first"
-	return 
+output=$(helm -n byconity get metadata  byconity 2>&1 | grep STATUS)
+status=$?
+
+if echo $output | grep -q "timeout"; then
+	echo "Cannot visit K8s or $NAMESPACE already exists, please unstiall it first. Resp=[${output}]"
+  exit 1;
 fi
 
 

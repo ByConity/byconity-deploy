@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: byconity-test
+spec:
+  containers:
+  - name: byconity-test
+    image: byconity-cn-beijing.cr.volces.com/byconity/byconity-test:0.4.1-testonly-2
